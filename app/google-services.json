@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "391863359288",
+    "firebase_url": "https://brewu-aff45.firebaseio.com",
+    "project_id": "brewu-aff45",
+    "storage_bucket": "brewu-aff45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391863359288:android:a1cd8136fb920867",
+        "android_client_info": {
+          "package_name": "com.danieldk.brewu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391863359288-0v78ravl72ld0dmt438jnp7s0s669eha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8FwKMWBqN6iWftiZuXPIxdw4-pvrjknY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391863359288-0v78ravl72ld0dmt438jnp7s0s669eha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
