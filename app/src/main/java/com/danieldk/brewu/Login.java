@@ -21,11 +21,6 @@ public class Login extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 1;
 
-    Button btn_login;
-    EditText text_loginEmail;
-    EditText text_loginPassword;
-    ImageView imgView;
-
     private List<AuthUI.IdpConfig> providers;
 
     @Override
@@ -38,19 +33,6 @@ public class Login extends AppCompatActivity {
                 new AuthUI.IdpConfig.FacebookBuilder().build());
 
         Login();
-
-        btn_login = findViewById(R.id.btn_login);
-        text_loginEmail = findViewById(R.id.text_loginEmail);
-        text_loginPassword = findViewById(R.id.text_loginPassword);
-        imgView = (ImageView) findViewById(R.id.imgView_login);
-
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Login();
-            }
-        });
     }
 
     private void Login(){
