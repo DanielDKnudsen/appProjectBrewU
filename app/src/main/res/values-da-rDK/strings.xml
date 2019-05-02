@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">BrewU</string>
     <string name="btn_login">Log ind</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Kodeord</string>
+    <string name="my_brews">Mine bryg</string>
 </resources>
