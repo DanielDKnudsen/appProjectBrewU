@@ -5,4 +5,5 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Kodeord</string>
     <string name="my_brews">Mine bryg</string>
+    <string name="all_brews">Alle bryg</string>
 </resources>
