@@ -38,6 +38,6 @@ public class MyBrews extends AppCompatActivity {
         //brew.setUsername(user.getDisplayName());
         //brew.setUserId(user.getUid());
 
-        model.createBrew(brew);
+        //model.createBrew(brew);
     }
 }
