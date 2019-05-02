@@ -23,7 +23,7 @@ public class MyBrews extends AppCompatActivity {
         BrewViewModel model = ViewModelProviders.of(this).get(BrewViewModel.class);
         model.getBrews();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         Brew brew = new Brew();
         brew.setAvgRating(3);
         brew.setBeerType("IPA");
@@ -32,7 +32,7 @@ public class MyBrews extends AppCompatActivity {
         brew.setLink("hej med dig");
         brew.setNumberOfRatings(30);
         brew.setUserRating(5);
-        brew.setUsername("Daniel");
+        brew.setUsername("Line");
         brew.setUserId("2");
         //brew.setUsername(user.getDisplayName());
         //brew.setUserId(user.getUid());

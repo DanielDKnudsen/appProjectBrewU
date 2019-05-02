@@ -28,14 +28,14 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /*Intent intent = new Intent(this, MyBrews.class);
+        Intent intent = new Intent(this, MyBrews.class);
         startActivity(intent);
-*/
-        providers = Arrays.asList(
+
+        /*providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.FacebookBuilder().build());
 
-        Login();
+        Login();*/
     }
 
     private void Login(){
