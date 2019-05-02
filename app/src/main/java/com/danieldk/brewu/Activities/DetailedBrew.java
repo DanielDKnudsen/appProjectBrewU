@@ -1,4 +1,4 @@
-package com.danieldk.brewu;
+package com.danieldk.brewu.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

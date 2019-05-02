@@ -1,4 +1,4 @@
-package com.danieldk.brewu;
+package com.danieldk.brewu.Activities;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.danieldk.brewu.Models.Brew;
+import com.danieldk.brewu.R;
 import com.danieldk.brewu.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
