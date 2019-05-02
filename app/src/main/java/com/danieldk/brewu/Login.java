@@ -28,6 +28,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /*Intent intent = new Intent(this, MyBrews.class);
+        startActivity(intent);
+*/
         providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.FacebookBuilder().build());
@@ -54,6 +57,7 @@ public class Login extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                 Intent intent = new Intent(this, MyBrews.class);
                 startActivity(intent);
             } else {
