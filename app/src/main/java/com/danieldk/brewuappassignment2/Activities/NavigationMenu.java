@@ -1,14 +1,10 @@
 package com.danieldk.brewuappassignment2.Activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.TransactionTooLargeException;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -23,13 +19,6 @@ import android.view.Menu;
 import com.danieldk.brewuappassignment2.Fragments.AllBrews;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,22 +94,17 @@ public class NavigationMenu extends AppCompatActivity
         int id = item.getItemId();
         transaction = fragmentManager.beginTransaction();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_myBrews) {
             Fragment myBrews = new MyBrews();
             transaction.replace(R.id.container, myBrews);
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_allBrews) {
             Fragment allBrews = new AllBrews();
             transaction.replace(R.id.container, allBrews);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_logOut) {
 
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            //TODO: kode hertil
         }
         transaction.commit();
 
