@@ -51,6 +51,4 @@ public class MyBrews extends Fragment {
         listViewMyBeers.setAdapter(beerAdaptor);
 
     }
-
-
 }

@@ -2,6 +2,12 @@ package com.danieldk.brewuappassignment2.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.TransactionTooLargeException;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -14,7 +20,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-
+import com.danieldk.brewuappassignment2.Fragments.AllBrews;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
 import com.firebase.ui.auth.AuthUI;
@@ -28,11 +34,20 @@ import java.util.List;
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+        fragmentManager = this.getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        Fragment myBrews = new MyBrews();
+        transaction.add(R.id.container, myBrews);
+        transaction.commit();
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -88,10 +103,15 @@ public class NavigationMenu extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        transaction = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            Fragment myBrews = new MyBrews();
+            transaction.replace(R.id.container, myBrews);
+
         } else if (id == R.id.nav_gallery) {
+            Fragment allBrews = new AllBrews();
+            transaction.replace(R.id.container, allBrews);
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -102,6 +122,7 @@ public class NavigationMenu extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+        transaction.commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
