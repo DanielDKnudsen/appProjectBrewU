@@ -28,6 +28,7 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
 
         /*providers = Arrays.asList(
+
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
         Login();*/
