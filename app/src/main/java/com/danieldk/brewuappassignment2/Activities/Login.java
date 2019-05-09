@@ -23,14 +23,16 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent intent = new Intent(this, NavigationMenu.class);
-        startActivity(intent);
 
-        /*providers = Arrays.asList(
+        //Intent intent = new Intent(this, NavigationMenu.class);
+        //startActivity(intent);
 
-                new AuthUI.IdpConfig.EmailBuilder().build());
+        providers = Arrays.asList(
 
-        Login();*/
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build());
+
+        Login();
     }
 
     private void Login(){
