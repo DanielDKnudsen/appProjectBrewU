@@ -24,6 +24,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         //Intent intent = new Intent(this, NavigationMenu.class);
         //startActivity(intent);
 
