@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">BrewU</string>
-    <string name="btn_login">Log ind</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Kodeord</string>
-    <string name="my_brews">Mine bryg</string>
-    <string name="all_brews">Alle bryg</string>
-</resources>

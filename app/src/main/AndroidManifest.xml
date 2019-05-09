@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.danieldk.brewu">
+    package="com.danieldk.brewuappassignment2">
 
     <application
         android:allowBackup="true"
@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.BrewBeer"></activity>
-        <activity android:name=".Activities.DetailedBrew" />
-        <activity android:name=".Activities.AllBrews" />
-        <activity android:name=".Activities.NewBrew" />
-        <activity android:name=".Activities.MyBrews" />
+        <activity
+            android:name=".Activities.NavigationMenu"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".Activities.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
