@@ -5,6 +5,7 @@ import java.util.Date;
 public class Brew {
 
     public Brew() {};
+    private String Title;
     private String Id;
     private String UserId;
     private String BeerType;
@@ -100,6 +101,15 @@ public class Brew {
                 ", Link='" + Link + '\'' +
                 ", Username='" + Username + '\'' +
                 ", CreationDate=" + CreationDate +
+                ",Title"+Title+
                 '}';
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 }
