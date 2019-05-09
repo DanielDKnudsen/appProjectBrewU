@@ -15,4 +15,8 @@
     <string name="menu_send">Send</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_brews">My brews</string>
+    <string name="all_brews">All brews</string>
+    <string name="log_out">Log out</string>
+    <string name="brewu">BrewU</string>
 </resources>
