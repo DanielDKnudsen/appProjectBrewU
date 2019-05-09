@@ -15,6 +15,43 @@
       },
       "oauth_client": [
         {
+          "client_id": "391863359288-scttnjq99qt56ndnh0h6upj3jumn4pfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.danieldk.brewu",
+            "certificate_hash": "390c0350f895675ae74809979de07cfd94335529"
+          }
+        },
+        {
+          "client_id": "391863359288-0v78ravl72ld0dmt438jnp7s0s669eha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8FwKMWBqN6iWftiZuXPIxdw4-pvrjknY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391863359288-0v78ravl72ld0dmt438jnp7s0s669eha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391863359288:android:104cb331a2ccb1ca",
+        "android_client_info": {
+          "package_name": "com.danieldk.brewuappassignment2"
+        }
+      },
+      "oauth_client": [
+        {
           "client_id": "391863359288-0v78ravl72ld0dmt438jnp7s0s669eha.apps.googleusercontent.com",
           "client_type": 3
         }
