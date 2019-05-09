@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.danieldk.brewuappassignment2.Fragments.AllBrews;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
 import com.firebase.ui.auth.AuthUI;
@@ -106,9 +107,10 @@ public class NavigationMenu extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Fragment myBrews = new MyBrews();
-            transaction.add(R.id.container, myBrews);
+            transaction.replace(R.id.container, myBrews);
         } else if (id == R.id.nav_gallery) {
-
+            Fragment allBrews = new AllBrews();
+            transaction.replace(R.id.container, allBrews);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {

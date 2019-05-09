@@ -9,27 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.danieldk.brewuappassignment2.R;
+import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 
-public class MyBrews extends Fragment {
+public class AllBrews extends Fragment {
 
-    private BrewViewModel mViewModel;
-
-    public static MyBrews newInstance() {
-        return new MyBrews();
+    public static AllBrews newInstance() {
+        return new AllBrews();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.my_brews_fragment, container, false);
+        return inflater.inflate(R.layout.all_brews_fragment, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
-        // TODO: Use the ViewModel
-    }
 }
