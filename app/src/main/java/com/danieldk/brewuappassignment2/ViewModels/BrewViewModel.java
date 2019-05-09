@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -36,10 +37,6 @@ public class BrewViewModel extends ViewModel {
 
                 if (value != null) {
                     brews = value.toObjects(Brew.class);
-
-                    for(Brew brew : brews){
-                        Log.d("Brew", brew.toString());
-                    }
                 }
             }
         });
@@ -61,4 +58,10 @@ public class BrewViewModel extends ViewModel {
                     }
                 });
     }
+
+    public List<Brew> loadBrews()
+    {
+        return brews;
+    }
+
 }
