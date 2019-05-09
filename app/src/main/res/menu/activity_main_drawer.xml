@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_top">
         <item
             android:id="@+id/nav_myBrews"
             android:icon="@drawable/nav_mybrews"
@@ -12,10 +13,13 @@
             android:id="@+id/nav_allBrews"
             android:icon="@drawable/nav_allbrews"
             android:title="@string/all_brews" />
+    </group>
+    <group
+        android:id="@+id/menu_bottom">
         <item
             android:id="@+id/nav_logOut"
             android:icon="@drawable/nav_logout"
-            android:title="@string/log_out" />
-    </group>
+            android:title="@string/log_out"/>
 
+    </group>
 </menu>
