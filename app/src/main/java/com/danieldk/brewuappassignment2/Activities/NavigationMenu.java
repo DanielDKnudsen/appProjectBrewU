@@ -46,7 +46,7 @@ public class NavigationMenu extends AppCompatActivity
         fragmentManager = this.getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment myBrews = new MyBrews();
-        transaction.add(R.id.container, myBrews);
+        transaction.add(R.id.fragmentContainer, myBrews);
         transaction.commit();
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -107,11 +107,11 @@ public class NavigationMenu extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Fragment myBrews = new MyBrews();
-            transaction.replace(R.id.container, myBrews);
+            transaction.replace(R.id.fragmentContainer, myBrews);
 
         } else if (id == R.id.nav_gallery) {
             Fragment allBrews = new AllBrews();
-            transaction.replace(R.id.container, allBrews);
+            transaction.replace(R.id.fragmentContainer, allBrews);
 
         } else if (id == R.id.nav_slideshow) {
 
