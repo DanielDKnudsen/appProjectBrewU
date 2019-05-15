@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.danieldk.brewuappassignment2.Adaptor.BeerAdaptor;
+import com.danieldk.brewuappassignment2.Adaptor.BrewAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.R;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
@@ -30,7 +30,7 @@ public class AllBrews extends Fragment {
     private BrewViewModel mViewModel;
     private ListView listViewAllBeers;
     private List<Brew> brewList;
-    private BeerAdaptor beerAdaptor;
+    private BrewAdaptor brewAdaptor;
     private ProgressBar loader;
     private Context context;
     private AutoCompleteTextView searchBrew;
@@ -62,8 +62,8 @@ public class AllBrews extends Fragment {
         loader.setVisibility(view.VISIBLE);
         mViewModel.loadAllBrews();
         mViewModel.getAllBrews().observe(this,brews ->{
-            beerAdaptor = new BeerAdaptor(context,brews);
-            listViewAllBeers.setAdapter(beerAdaptor);
+            brewAdaptor = new BrewAdaptor(context,brews);
+            listViewAllBeers.setAdapter(brewAdaptor);
             loader.setVisibility(view.GONE);
         });
 
@@ -82,7 +82,7 @@ public class AllBrews extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                beerAdaptor.getFilter().filter(s.toString());
+                brewAdaptor.getFilter().filter(s.toString());
             }
 
             @Override

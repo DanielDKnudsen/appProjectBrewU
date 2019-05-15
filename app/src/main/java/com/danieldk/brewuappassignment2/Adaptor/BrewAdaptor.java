@@ -18,14 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BeerAdaptor extends BaseAdapter implements Filterable {
+public class BrewAdaptor extends BaseAdapter implements Filterable {
 
     private Context context;
     private Brew brew;
     private List<Brew> OriginalBrews;
     private List<Brew> FilteredBrews;
 
-    public BeerAdaptor(Context context, List<Brew> brews)
+    public BrewAdaptor(Context context, List<Brew> brews)
     {
         this.context = context;
         this.OriginalBrews = brews;
