@@ -87,8 +87,8 @@ public class NavigationMenu extends AppCompatActivity
             transaction.replace(R.id.fragmentContainer, allBrews);
 
         } else if (id == R.id.nav_logOut) {
-
-            //TODO: kode hertil
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(this,Login.class));
         }
         transaction.commit();
 
