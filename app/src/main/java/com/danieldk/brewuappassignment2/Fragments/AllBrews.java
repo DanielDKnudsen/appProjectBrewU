@@ -57,8 +57,8 @@ public class AllBrews extends Fragment {
         loader = view.findViewById(R.id.loader);
         searchBrew = view.findViewById(R.id.SearchBrewType);
         loader.setVisibility(view.VISIBLE);
-        mViewModel.getBrews();
-        mViewModel.loadBrews().observe(this,brews ->{
+        mViewModel.loadAllBrews();
+        mViewModel.getAllBrews().observe(this,brews ->{
             beerAdaptor = new BeerAdaptor(context,brews);
             listViewAllBeers.setAdapter(beerAdaptor);
             loader.setVisibility(view.GONE);
