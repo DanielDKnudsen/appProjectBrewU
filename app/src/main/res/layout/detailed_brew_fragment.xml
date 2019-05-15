@@ -17,6 +17,7 @@
         android:layout_marginEnd="151dp"
         android:layout_marginRight="151dp"
         android:text="New England"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
         android:layout_marginEnd="181dp"
         android:layout_marginRight="181dp"
         android:text="IPA"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBrewNameDetail" />
@@ -45,6 +47,7 @@
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
         android:text="@string/average_rating"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBrewTypeDetail" />
@@ -78,6 +81,7 @@
         android:layout_marginEnd="176dp"
         android:layout_marginRight="176dp"
         android:text="@string/my_rating"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avgRating" />
@@ -106,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="@string/see_brew_recipe"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myRating" />
