@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -20,6 +22,7 @@ import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.R;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllBrews extends Fragment {
@@ -30,7 +33,7 @@ public class AllBrews extends Fragment {
     private BeerAdaptor beerAdaptor;
     private ProgressBar loader;
     private Context context;
-    private EditText searchBrew;
+    private AutoCompleteTextView searchBrew;
 
     public static AllBrews newInstance() {
         return new AllBrews();
@@ -63,6 +66,13 @@ public class AllBrews extends Fragment {
             listViewAllBeers.setAdapter(beerAdaptor);
             loader.setVisibility(view.GONE);
         });
+
+        String[] BeerTypesTest = new String[] {"IPA", "IPA3","IPA4","IPA5", "Stout", "Pilsner"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, BeerTypesTest);
+
+        AutoCompleteTextView textView = view.findViewById(R.id.SearchBrewType);
+        textView.setAdapter(adapter);
 
         searchBrew.addTextChangedListener(new TextWatcher() {
             @Override
