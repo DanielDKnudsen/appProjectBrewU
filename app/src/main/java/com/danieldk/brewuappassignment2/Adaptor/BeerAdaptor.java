@@ -51,7 +51,7 @@ public class BeerAdaptor extends BaseAdapter {
 
         if(brew != null)
         {
-            TextView txtTitle = convertView.findViewById(R.id.txtBrewTitle);
+            TextView txtTitle = convertView.findViewById(R.id.txtBrewName);
             TextView txtType = convertView.findViewById(R.id.txtBrewType);
 
             txtTitle.setText(brew.getTitle());
