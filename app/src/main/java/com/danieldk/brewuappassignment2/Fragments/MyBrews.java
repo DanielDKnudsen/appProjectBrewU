@@ -2,13 +2,17 @@ package com.danieldk.brewuappassignment2.Fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,6 +35,8 @@ public class MyBrews extends Fragment {
     private ProgressBar loader;
     private Context context;
     private TextView txtUserNameMyBrews;
+    private FragmentTransaction transaction;
+    private FragmentManager fragmentManager;
 
     public static MyBrews newInstance() {
         return new MyBrews();
@@ -64,7 +70,26 @@ public class MyBrews extends Fragment {
         mViewModel.getMyBrews().observe(this, brews ->{
             brewAdaptor = new BrewAdaptor(context,brews);
             listViewMyBeers.setAdapter(brewAdaptor);
+
             loader.setVisibility(view.GONE);
         });
+
+        // goes to detail
+        listViewMyBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fragment detailedBrew = new DetailedBrew();
+
+                fragmentManager = getActivity().getSupportFragmentManager();
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentContainer,detailedBrew);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+
+            }
+        });
+
     }
-}
+
+    }

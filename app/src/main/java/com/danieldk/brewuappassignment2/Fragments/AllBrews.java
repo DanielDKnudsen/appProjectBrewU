@@ -4,19 +4,32 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.content.IntentFilter;
+=======
+>>>>>>> click
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+<<<<<<< HEAD
 import android.support.v4.content.LocalBroadcastManager;
+=======
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+>>>>>>> click
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+=======
+import android.widget.AdapterView;
+import android.widget.EditText;
+>>>>>>> click
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,6 +57,9 @@ public class AllBrews extends Fragment {
     private Context context;
     private AutoCompleteTextView searchBrew;
     private BroadcastReceiver broadcastReceiver;
+
+    private FragmentTransaction transaction;
+    private FragmentManager fragmentManager;
 
     public static AllBrews newInstance() {
         return new AllBrews();
@@ -101,7 +117,22 @@ public class AllBrews extends Fragment {
 
             }
         });
-    }
+
+        // goes to detail
+        listViewAllBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Brew brew = (Brew)listViewAllBeers.getItemAtPosition(position);
+                Fragment detailedBrew = new DetailedBrew();
+                Bundle bundle = new Bundle();
+                bundle.putString("id", brew.getId()); // hvad skal sendes med over?
+                detailedBrew.setArguments(bundle);
+
+                fragmentManager = getActivity().getSupportFragmentManager();
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentContainer,detailedBrew);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
     private final BroadcastReceiver onBrewVolleyResult = new BroadcastReceiver() {
         @Override
@@ -113,8 +144,15 @@ public class AllBrews extends Fragment {
                 BrewTypes.add(BeerTypesTest.get(i).getShortName());
             }
 
+<<<<<<< HEAD
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_dropdown_item_1line, BrewTypes);
             searchBrew.setAdapter(adapter);
         }
     };
+=======
+            }
+        });
+
+    }
+>>>>>>> click
 }

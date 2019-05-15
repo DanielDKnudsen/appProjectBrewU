@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Fragments.AllBrews;
+import com.danieldk.brewuappassignment2.Fragments.DetailedBrew;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -96,4 +97,5 @@ public class NavigationMenu extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
