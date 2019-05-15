@@ -34,7 +34,7 @@ public class NavigationMenu extends AppCompatActivity
         fragmentManager = this.getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment myBrews = new MyBrews();
-        transaction.add(R.id.container, myBrews);
+        transaction.add(R.id.fragmentContainer, myBrews);
         transaction.commit();
         setSupportActionBar(toolbar);
 
@@ -66,11 +66,11 @@ public class NavigationMenu extends AppCompatActivity
 
         if (id == R.id.nav_myBrews) {
             Fragment myBrews = new MyBrews();
-            transaction.replace(R.id.container, myBrews);
+            transaction.replace(R.id.fragmentContainer, myBrews);
 
         } else if (id == R.id.nav_allBrews) {
             Fragment allBrews = new AllBrews();
-            transaction.replace(R.id.container, allBrews);
+            transaction.replace(R.id.fragmentContainer, allBrews);
 
         } else if (id == R.id.nav_logOut) {
 

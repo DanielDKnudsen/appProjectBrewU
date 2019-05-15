@@ -26,17 +26,17 @@ public class BeerAdaptor extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return BrewList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return BrewList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class BeerAdaptor extends BaseAdapter {
             TextView txtType = convertView.findViewById(R.id.txtBrewType);
 
             txtTitle.setText(brew.getTitle());
-            txtTitle.setText(brew.getBeerType());
+            txtType.setText(brew.getBeerType());
         }
 
         return convertView;
