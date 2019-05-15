@@ -24,9 +24,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        providers = Arrays.asList(
 
-                new AuthUI.IdpConfig.EmailBuilder().build());
+        providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build());
 
         Login();
     }
