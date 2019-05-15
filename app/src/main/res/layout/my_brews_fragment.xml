@@ -7,31 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.MyBrews">
 
-    <ListView
-        android:id="@+id/listViewMyBeers"
-        android:layout_width="409dp"
-        android:layout_height="605dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="67dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/txtMyBrews"
+        android:layout_width="98dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/my_brews"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtUserNameMyBrews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/loader"
-        style="?android:attr/progressBarStyle"
+    <TextView
+        android:id="@+id/txtUserNameMyBrews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Daniel Knudsen"
+        app:layout_constraintBottom_toTopOf="@+id/listMyBrews"
+        app:layout_constraintStart_toStartOf="@+id/txtMyBrews"
+        app:layout_constraintTop_toBottomOf="@+id/txtMyBrews" />
+
+    <ListView
+        android:id="@+id/listMyBrews"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/listViewMyBeers"
-        app:layout_constraintStart_toStartOf="@+id/listViewMyBeers"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserNameMyBrews" />
 </android.support.constraint.ConstraintLayout>
