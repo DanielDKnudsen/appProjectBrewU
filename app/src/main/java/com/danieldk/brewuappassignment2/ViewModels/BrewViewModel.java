@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -41,11 +42,14 @@ public class BrewViewModel extends ViewModel {
                     return;
                 }
                 if (value != null) {
-                    //for (QueryDocumentSnapshot document : value) {
-                    //    Log.d("DEBUG", document.getId() + " => " + document.getData());
-                    //}
-                    allBrews.setValue(value.toObjects(Brew.class));
-                    Log.d("viewModel", "allBrews fetched");
+                    int i = 0;
+                    List<Brew> list;
+                    list = value.toObjects(Brew.class);
+                    for (QueryDocumentSnapshot document : value) {
+                        list.get(i).setId(document.getId());
+                        i++;
+                    }
+                    allBrews.setValue(list);
                 }
             }
         });
@@ -97,7 +101,7 @@ public class BrewViewModel extends ViewModel {
 
     public void UpdateBrew(Brew brew) {
         db.collection("Brews")
-                .document("5k9epW6qvbL73a6N82Et")
+                .document(brew.getId())
                 .set(brew)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
