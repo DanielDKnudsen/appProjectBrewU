@@ -15,9 +15,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+
 import com.danieldk.brewuappassignment2.Fragments.AllBrews;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +35,8 @@ public class NavigationMenu extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         fragmentManager = this.getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment myBrews = new MyBrews();
@@ -39,7 +45,11 @@ public class NavigationMenu extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView menuUserName = headerView.findViewById(R.id.txtMenuUserName);
+        menuUserName.setText(user.getDisplayName());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
