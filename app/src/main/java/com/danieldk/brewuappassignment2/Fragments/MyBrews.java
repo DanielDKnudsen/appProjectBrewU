@@ -16,8 +16,9 @@ import com.danieldk.brewuappassignment2.Adaptor.BeerAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.danieldk.brewuappassignment2.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyBrews extends Fragment {
@@ -50,11 +51,12 @@ public class MyBrews extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         listViewMyBeers = view.findViewById(R.id.listViewMyBeers);
         loader = view.findViewById(R.id.loader);
         loader.setVisibility(view.VISIBLE);
-        mViewModel.getBrews();
-        mViewModel.loadBrews().observe(this,brews ->{
+        mViewModel.loadMyBrews();
+        mViewModel.getMyBrews().observe(this, brews ->{
             beerAdaptor = new BeerAdaptor(context,brews);
             listViewMyBeers.setAdapter(beerAdaptor);
             loader.setVisibility(view.GONE);
