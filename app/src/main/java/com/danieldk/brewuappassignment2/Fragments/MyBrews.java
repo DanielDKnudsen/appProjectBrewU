@@ -50,7 +50,7 @@ public class MyBrews extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
-        listViewMyBeers = view.findViewById(R.id.listViewMyBeers);
+        listViewMyBeers = view.findViewById(R.id.listMyBrews);
         loader = view.findViewById(R.id.loader);
         loader.setVisibility(view.VISIBLE);
         mViewModel.getBrews();
