@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.danieldk.brewuappassignment2.Adaptor.BeerAdaptor;
+import com.danieldk.brewuappassignment2.Adaptor.BrewAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.R;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
@@ -31,7 +31,7 @@ public class DetailedBrew extends Fragment {
     private RatingBar avgRating;
     private RatingBar myRating;
     private BrewViewModel mViewModel;
-    private BeerAdaptor beerAdaptor;
+    private BrewAdaptor brewAdaptor;
     private Context context;
     private String brewId;
     private Brew selectedBrew;
