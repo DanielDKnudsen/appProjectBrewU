@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.AllBrews">
+
+
+    <TextView
+        android:id="@+id/txtBrewNameDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginTop="58dp"
+        android:text="New England"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtBrewTypeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="9dp"
+        android:text="IPA"
+        app:layout_constraintStart_toStartOf="@+id/txtBrewNameDetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtBrewNameDetail" />
+
+    <TextView
+        android:id="@+id/txtAvgRatingDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/average_rating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBrewTypeDetail" />
+
+    <!--https://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars-->
+    <RatingBar
+        android:id="@+id/avgRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="16dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="3"
+        android:stepSize="1"
+        app:layout_constraintStart_toStartOf="@+id/txtAvgRatingDetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtAvgRatingDetail" />
+
+    <TextView
+        android:id="@+id/txtMyRatingDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/my_rating"
+        app:layout_constraintBottom_toTopOf="@+id/myRating"
+        app:layout_constraintStart_toStartOf="@+id/myRating" />
+
+    <RatingBar
+        android:id="@+id/myRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="61dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="4"
+        android:stepSize="1"
+        app:layout_constraintStart_toStartOf="@+id/avgRating"
+        app:layout_constraintTop_toBottomOf="@+id/avgRating" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="@string/see_brew_recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRating" />
+</android.support.constraint.ConstraintLayout>
