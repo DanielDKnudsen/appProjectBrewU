@@ -17,7 +17,7 @@
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="New England"
-        android:textSize="20dp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,12 +26,16 @@
         android:id="@+id/txtBrewTypeDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
         android:text="IPA"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/txtBrewNameDetail"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBrewNameDetail" />
 
     <TextView
@@ -40,29 +44,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="@string/average_rating"
-        android:textSize="20dp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBrewTypeDetail" />
 
     <!--https://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars-->
     <RatingBar
         android:id="@+id/avgRating"
-        style="?android:attr/ratingBarStyleSmall"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
         android:isIndicator="true"
         android:numStars="5"
         android:rating="3"
         android:stepSize="1"
-        app:layout_constraintStart_toStartOf="@+id/txtAvgRatingDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAvgRatingDetail" />
 
     <TextView
@@ -75,19 +82,19 @@
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="@string/my_rating"
-        android:textSize="20dp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avgRating" />
 
     <RatingBar
         android:id="@+id/myRating"
-        style="?android:attr/ratingBarStyleSmall"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:isIndicator="true"
@@ -95,7 +102,7 @@
         android:rating="4"
         android:stepSize="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMyRatingDetail" />
 
@@ -105,13 +112,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="@string/see_brew_recipe"
-        android:textSize="20dp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myRating" />
 </android.support.constraint.ConstraintLayout>
