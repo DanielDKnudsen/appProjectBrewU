@@ -78,17 +78,16 @@ public class DetailedBrew extends Fragment {
         myRating = view.findViewById(R.id.myRating);
         mViewModel.loadAllBrews();
         mViewModel.getAllBrews().observe(this, brews -> {
-            for (Brew brew: brews
-                 ) {
-
-                if (brew.getId() == brewId) {
+            for (Brew brew: brews) {
+                String test = brew.getId();
+                if (test.contains(brewId)) {
                     selectedBrew = brew;
                     myRatingSet = false;
                     Map<String, String> map = (Map)brew.getUserRatings();
                     for (Map.Entry<String, String> entry : map.entrySet()) {
-                        if (user.getUid() == entry.getKey()) {
+                        if (user.getUid().contains(entry.getKey())) {
                             myRatingSet = true;
-                            myRating.setRating(brew.getUserRating());
+                            myRating.setRating(Float.parseFloat(entry.getValue()));
                         }
                     }
 
@@ -104,9 +103,17 @@ public class DetailedBrew extends Fragment {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 myRating.setRating(rating);
                 Map<String, String> map = (Map)selectedBrew.getUserRatings();
-                avgRating.setRating(((selectedBrew.getAvgRating()*map.size())+rating)/(map.size()+1));
+                String oldRating;
+                if (map.containsKey(user.getUid())) {
+                    oldRating = map.get(user.getUid());
+                } else {
+                    oldRating = "0.0";
+                }
                 map.put(user.getUid(), Float.toString(rating));
+                float test = (selectedBrew.getAvgRating()*map.size())+rating-Float.parseFloat(oldRating)/map.size();
+                avgRating.setRating(((selectedBrew.getAvgRating()*map.size())+rating-Float.parseFloat(oldRating))/(map.size()));
                 selectedBrew.setUserRatings(map);
+                selectedBrew.setAvgRating(avgRating.getRating());
             }
         });
     }

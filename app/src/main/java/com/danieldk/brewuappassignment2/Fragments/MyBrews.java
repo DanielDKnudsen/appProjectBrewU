@@ -75,18 +75,21 @@ public class MyBrews extends Fragment {
         });
 
         // goes to detail
+        // goes to detail
         listViewMyBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Brew brew = (Brew) listViewMyBeers.getItemAtPosition(position);
                 Fragment detailedBrew = new DetailedBrew();
+                Bundle bundle = new Bundle();
+                bundle.putString("id", brew.getId());
+                detailedBrew.setArguments(bundle);
 
                 fragmentManager = getActivity().getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragmentContainer,detailedBrew);
+                transaction.replace(R.id.fragmentContainer, detailedBrew);
                 transaction.addToBackStack(null);
                 transaction.commit();
-
-
             }
         });
 

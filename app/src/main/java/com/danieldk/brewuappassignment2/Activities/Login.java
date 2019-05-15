@@ -24,7 +24,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
@@ -33,12 +32,18 @@ public class Login extends AppCompatActivity {
     }
 
     private void Login(){
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .setLogo(R.drawable.cheers)
-                        .build(), RC_SIGN_IN);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(this, NavigationMenu.class);
+            finish();
+            startActivity(intent);
+        } else {
+            startActivityForResult(
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setAvailableProviders(providers)
+                            .setLogo(R.drawable.cheers)
+                            .build(), RC_SIGN_IN);
+        }
     }
 
     @Override
@@ -53,6 +58,7 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 Intent intent = new Intent(this, NavigationMenu.class);
+                finish();
                 startActivity(intent);
             } else {
             }

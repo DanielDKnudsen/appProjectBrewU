@@ -66,7 +66,7 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
 
             txtTitle.setText(brew.getTitle());
             txtType.setText(brew.getBeerType());
-            rating.setNumStars((int)brew.getAvgRating());
+            rating.setRating(brew.getAvgRating());
             txtUser.setText(brew.getUsername());
         }
 
