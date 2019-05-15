@@ -9,13 +9,12 @@
 
     <TextView
         android:id="@+id/txtMyBrews"
-        android:layout_width="98dp"
-        android:layout_height="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
         android:text="@string/my_brews"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtUserNameMyBrews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,10 +23,14 @@
         android:id="@+id/txtUserNameMyBrews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginRight="156dp"
         android:text="Daniel Knudsen"
-        app:layout_constraintBottom_toTopOf="@+id/listMyBrews"
-        app:layout_constraintStart_toStartOf="@+id/txtMyBrews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMyBrews" />
 
     <ListView
@@ -36,7 +39,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
