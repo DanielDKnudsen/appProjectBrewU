@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.danieldk.brewuappassignment2.Adaptor.BeerAdaptor;
+import com.danieldk.brewuappassignment2.Adaptor.BrewAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.danieldk.brewuappassignment2.R;
@@ -26,7 +26,7 @@ public class MyBrews extends Fragment {
     private BrewViewModel mViewModel;
     private ListView listViewMyBeers;
     private List<Brew> brewList;
-    private BeerAdaptor beerAdaptor;
+    private BrewAdaptor brewAdaptor;
     private ProgressBar loader;
     private Context context;
 
@@ -58,8 +58,8 @@ public class MyBrews extends Fragment {
         loader.setVisibility(view.VISIBLE);
         mViewModel.loadMyBrews();
         mViewModel.getMyBrews().observe(this, brews ->{
-            beerAdaptor = new BeerAdaptor(context,brews);
-            listViewMyBeers.setAdapter(beerAdaptor);
+            brewAdaptor = new BrewAdaptor(context,brews);
+            listViewMyBeers.setAdapter(brewAdaptor);
             loader.setVisibility(view.GONE);
         });
     }
