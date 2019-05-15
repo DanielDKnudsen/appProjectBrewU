@@ -10,7 +10,6 @@ public class Brew {
     private String UserId;
     private String BeerType;
     private float UserRating;
-    private int NumberOfRatings;
     private float AvgRating;
     private String Link;
     private String Username;
@@ -58,14 +57,6 @@ public class Brew {
         UserRating = userRating;
     }
 
-    public int getNumberOfRatings() {
-        return NumberOfRatings;
-    }
-
-    public void setNumberOfRatings(int numberOfRatings) {
-        NumberOfRatings = numberOfRatings;
-    }
-
     public float getAvgRating() {
         return AvgRating;
     }
@@ -105,7 +96,6 @@ public class Brew {
                 ", UserId='" + UserId + '\'' +
                 ", BeerType='" + BeerType + '\'' +
                 ", UserRating=" + UserRating +
-                ", NumberOfRatings=" + NumberOfRatings +
                 ", AvgRating=" + AvgRating +
                 ", Link='" + Link + '\'' +
                 ", Username='" + Username + '\'' +

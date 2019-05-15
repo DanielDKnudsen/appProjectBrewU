@@ -41,6 +41,9 @@ public class BrewViewModel extends ViewModel {
                     return;
                 }
                 if (value != null) {
+                    //for (QueryDocumentSnapshot document : value) {
+                    //    Log.d("DEBUG", document.getId() + " => " + document.getData());
+                    //}
                     allBrews.setValue(value.toObjects(Brew.class));
                     Log.d("viewModel", "allBrews fetched");
                 }
@@ -90,6 +93,24 @@ public class BrewViewModel extends ViewModel {
     }
     public MutableLiveData<List<Brew>> getMyBrews() {
         return myBrews;
+    }
+
+    public void UpdateBrew(Brew brew) {
+        db.collection("Brews")
+                .document("5k9epW6qvbL73a6N82Et")
+                .set(brew)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Brew", "Set new brew");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Brew", "Error writing document", e);
+                    }
+                });
     }
 
 }

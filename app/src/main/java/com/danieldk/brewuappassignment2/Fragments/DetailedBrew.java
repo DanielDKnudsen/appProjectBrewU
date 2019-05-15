@@ -20,6 +20,7 @@ import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -36,9 +37,16 @@ public class DetailedBrew extends Fragment {
     private String brewId;
     private Brew selectedBrew;
     private FirebaseUser user;
+    private Boolean myRatingSet;
 
     public DetailedBrew() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mViewModel.UpdateBrew(selectedBrew);
     }
 
     @Override
@@ -74,11 +82,19 @@ public class DetailedBrew extends Fragment {
                  ) {
 
                 if (brew.getId() == brewId) {
+                    selectedBrew = brew;
+                    myRatingSet = false;
+                    Map<String, String> map = (Map)brew.getUserRatings();
+                    for (Map.Entry<String, String> entry : map.entrySet()) {
+                        if (user.getUid() == entry.getKey()) {
+                            myRatingSet = true;
+                            myRating.setRating(brew.getUserRating());
+                        }
+                    }
 
                     txtBrewNameDetail.setText(brew.getTitle());
                     txtBrewTypeDetail.setText(brew.getBeerType());
                     avgRating.setRating(brew.getAvgRating());
-                    myRating.setRating(brew.getUserRating());
                 }
             }
         });
@@ -87,6 +103,10 @@ public class DetailedBrew extends Fragment {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 myRating.setRating(rating);
+                Map<String, String> map = (Map)selectedBrew.getUserRatings();
+                avgRating.setRating(((selectedBrew.getAvgRating()*map.size())+rating)/(map.size()+1));
+                map.put(user.getUid(), Float.toString(rating));
+                selectedBrew.setUserRatings(map);
             }
         });
     }
