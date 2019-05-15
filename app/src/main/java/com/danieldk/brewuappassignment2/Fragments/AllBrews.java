@@ -2,18 +2,23 @@ package com.danieldk.brewuappassignment2.Fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.Adaptor.BeerAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
@@ -31,6 +36,9 @@ public class AllBrews extends Fragment {
     private ProgressBar loader;
     private Context context;
     private EditText searchBrew;
+
+    private FragmentTransaction transaction;
+    private FragmentManager fragmentManager;
 
     public static AllBrews newInstance() {
         return new AllBrews();
@@ -58,8 +66,8 @@ public class AllBrews extends Fragment {
         searchBrew = view.findViewById(R.id.SearchBrewType);
         loader.setVisibility(view.VISIBLE);
         mViewModel.loadAllBrews();
-        mViewModel.getAllBrews().observe(this,brews ->{
-            beerAdaptor = new BeerAdaptor(context,brews);
+        mViewModel.getAllBrews().observe(this, brews -> {
+            beerAdaptor = new BeerAdaptor(context, brews);
             listViewAllBeers.setAdapter(beerAdaptor);
             loader.setVisibility(view.GONE);
         });
@@ -80,7 +88,25 @@ public class AllBrews extends Fragment {
 
             }
         });
+
+        // goes to detail
+        listViewAllBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fragment detailedBrew = new DetailedBrew();
+                Bundle bundle = new Bundle();
+                bundle.putLong("id", id); // hvad skal sendes med over?
+                detailedBrew.setArguments(bundle);
+
+                fragmentManager = getActivity().getSupportFragmentManager();
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentContainer,detailedBrew);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+
+            }
+        });
+
     }
-
-
 }
