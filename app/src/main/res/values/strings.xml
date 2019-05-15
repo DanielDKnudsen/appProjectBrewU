@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BrewUAppAssignment2</string>
+    <string name="app_name">BrewU</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -9,9 +9,10 @@
     <string name="my_brews">My brews</string>
     <string name="all_brews">All brews</string>
     <string name="log_out">Log out</string>
-    <string name="brewu">BrewU</string>
     <string name="average_rating">Average rating</string>
     <string name="my_rating">My rating</string>
     <string name="see_brew_recipe">See brew recipe</string>
     <string name="SearchBrewTypeHint">Search Brew Type</string>
+    <string name="notificationTitle">Someone rated your brew</string>
+    <string name="notificationText">Click here to see the rating</string>
 </resources>

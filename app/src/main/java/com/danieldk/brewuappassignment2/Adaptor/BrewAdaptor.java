@@ -56,7 +56,6 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
             convertView = brewInflator.inflate(R.layout.brew_list_item, null);
         }
         brew = FilteredBrews.get(position);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(brew != null)
         {
@@ -68,13 +67,7 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
             txtTitle.setText(brew.getTitle());
             txtType.setText(brew.getBeerType());
             rating.setNumStars((int)brew.getAvgRating());
-
-            if(user != null)
-            {
-                txtUser.setText(user.getDisplayName());
-            } else {
-                txtUser.setText("Unknown"); // TODO: Externalize string
-            }
+            txtUser.setText(brew.getUsername());
         }
 
         return convertView;

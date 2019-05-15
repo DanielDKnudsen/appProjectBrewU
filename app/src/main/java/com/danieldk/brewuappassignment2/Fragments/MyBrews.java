@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.Adaptor.BrewAdaptor;
 import com.danieldk.brewuappassignment2.Models.Brew;
@@ -29,6 +30,7 @@ public class MyBrews extends Fragment {
     private BrewAdaptor brewAdaptor;
     private ProgressBar loader;
     private Context context;
+    private TextView txtUserNameMyBrews;
 
     public static MyBrews newInstance() {
         return new MyBrews();
@@ -53,6 +55,8 @@ public class MyBrews extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        txtUserNameMyBrews = view.findViewById(R.id.txtUserNameMyBrews);
+        txtUserNameMyBrews.setText(user.getDisplayName());
         listViewMyBeers = view.findViewById(R.id.listMyBrews);
         loader = view.findViewById(R.id.loader);
         loader.setVisibility(view.VISIBLE);
