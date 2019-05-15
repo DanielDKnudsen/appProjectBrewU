@@ -15,6 +15,15 @@ public class Brew {
     private String Link;
     private String Username;
     private Date CreationDate;
+    private Object UserRatings;
+
+    public Object getUserRatings() {
+        return UserRatings;
+    }
+
+    public void setUserRatings(Object userRatings) {
+        UserRatings = userRatings;
+    }
 
     public String getId() {
 

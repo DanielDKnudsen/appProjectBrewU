@@ -93,9 +93,10 @@ public class AllBrews extends Fragment {
         listViewAllBeers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Brew brew = (Brew)listViewAllBeers.getItemAtPosition(position);
                 Fragment detailedBrew = new DetailedBrew();
                 Bundle bundle = new Bundle();
-                bundle.putLong("id", id); // hvad skal sendes med over?
+                bundle.putString("id", brew.getId()); // hvad skal sendes med over?
                 detailedBrew.setArguments(bundle);
 
                 fragmentManager = getActivity().getSupportFragmentManager();
