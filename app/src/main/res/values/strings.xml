@@ -13,7 +13,7 @@
     <string name="SearchBrewTypeHint">Search Brew Type</string>
     <string name="notificationTitle">Someone rated your brew</string>
     <string name="notificationText">has been rated. New average rating is:</string>
-
+    <string name="placeholder" translatable="false">Placeholder</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="TemperatureHint">Temperature:</string>
