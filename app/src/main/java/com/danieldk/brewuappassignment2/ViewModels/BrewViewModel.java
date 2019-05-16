@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Models.Brew;
+import com.danieldk.brewuappassignment2.Models.Step;
 import com.danieldk.brewuappassignment2.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +33,7 @@ public class BrewViewModel extends ViewModel {
     private User user;
     private MutableLiveData<List<Brew>> allBrews;
     private MutableLiveData<List<Brew>> myBrews;
+    private MutableLiveData<List<Step>> steps;
 
     public void loadAllBrews(){
         allBrews = new MutableLiveData<>();
@@ -66,8 +68,6 @@ public class BrewViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-
-                    task.getResult();
                     myBrews.setValue(task.getResult().toObjects(Brew.class));
                 } else {
                     Log.d("MyBrews", "Error getting documents: ", task.getException());
@@ -100,6 +100,9 @@ public class BrewViewModel extends ViewModel {
     public MutableLiveData<List<Brew>> getMyBrews() {
         return myBrews;
     }
+    public MutableLiveData<List<Step>> getSteps() {
+        return steps;
+    }
 
     public void UpdateBrew(Brew brew) {
         db.collection("Brews")
@@ -117,6 +120,23 @@ public class BrewViewModel extends ViewModel {
                         Log.w("Brew", "Error writing document", e);
                     }
                 });
+    }
+
+    public void loadSteps(String brewId) {
+        steps = new MutableLiveData<>();
+        db.collection("Steps")
+                .whereEqualTo("brewId", brewId)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<Step> test = task.getResult().toObjects(Step.class);
+                    steps.setValue(task.getResult().toObjects(Step.class));
+                } else {
+                    Log.d("Steps", "Error getting document: ", task.getException());
+                }
+            }
+        });
     }
 
 
