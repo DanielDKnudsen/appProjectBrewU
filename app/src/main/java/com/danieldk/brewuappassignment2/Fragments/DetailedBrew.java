@@ -35,7 +35,6 @@ public class DetailedBrew extends Fragment {
     private TextView txtBrewNameDetail, txtBrewTypeDetail, txtBrewUserDetail;
     private RatingBar avgRating, myRating;
     private BrewViewModel mViewModel;
-    private BrewAdaptor brewAdaptor;
     private Context context;
     private String brewId;
     private Brew selectedBrew;
