@@ -28,10 +28,8 @@ import java.util.Map;
 
 public class DetailedBrew extends Fragment {
 
-    private TextView txtBrewNameDetail;
-    private TextView txtBrewTypeDetail;
-    private RatingBar avgRating;
-    private RatingBar myRating;
+    private TextView txtBrewNameDetail, txtBrewTypeDetail, txtBrewUserDetail;
+    private RatingBar avgRating, myRating;
     private BrewViewModel mViewModel;
     private BrewAdaptor brewAdaptor;
     private Context context;
@@ -75,6 +73,7 @@ public class DetailedBrew extends Fragment {
 
         txtBrewNameDetail = view.findViewById(R.id.txtBrewNameDetail);
         txtBrewTypeDetail = view.findViewById(R.id.txtBrewTypeDetail);
+        txtBrewUserDetail = view.findViewById(R.id.txtBrewUserDetail);
         avgRating = view.findViewById(R.id.avgRating);
         myRating = view.findViewById(R.id.myRating);
         mViewModel.loadAllBrews();
@@ -93,6 +92,7 @@ public class DetailedBrew extends Fragment {
 
                     txtBrewNameDetail.setText(brew.getTitle());
                     txtBrewTypeDetail.setText(brew.getBeerType());
+                    txtBrewUserDetail.setText(brew.getUsername());
                     avgRating.setRating(brew.getAvgRating());
                 }
             }
