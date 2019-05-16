@@ -1,5 +1,6 @@
 package com.danieldk.brewuappassignment2.Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 public class Brew {

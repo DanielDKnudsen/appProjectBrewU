@@ -26,6 +26,8 @@ import com.danieldk.brewuappassignment2.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 public class NavigationMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,10 +43,13 @@ public class NavigationMenu extends AppCompatActivity
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         fragmentManager = this.getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
-        Fragment myBrews = new MyBrews();
-        transaction.add(R.id.fragmentContainer, myBrews);
-        transaction.commit();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        if(fragments.isEmpty()) {
+            transaction = fragmentManager.beginTransaction();
+            Fragment myBrews = new MyBrews();
+            transaction.add(R.id.fragmentContainer, myBrews);
+            transaction.commit();
+        }
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

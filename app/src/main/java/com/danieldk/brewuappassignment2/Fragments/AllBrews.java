@@ -83,11 +83,16 @@ public class AllBrews extends Fragment {
         mViewModel.getAllBrews().observe(this, brews -> {
             brewAdaptor = new BrewAdaptor(context, brews);
             listViewAllBeers.setAdapter(brewAdaptor);
+            String searchText = searchBrew.getText().toString();
+            if(!searchText.isEmpty())
+            {
+                brewAdaptor.getFilter().filter(searchText);
+            }
             loader.setVisibility(view.GONE);
         });
-
         BrewVolley brewVolley = new BrewVolley(context);
         brewVolley.sendRequest();
+
 
         searchBrew.addTextChangedListener(new TextWatcher() {
             @Override
@@ -97,7 +102,11 @@ public class AllBrews extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                brewAdaptor.getFilter().filter(s.toString());
+                if(brewAdaptor != null)
+                {
+                    brewAdaptor.getFilter().filter(s.toString());
+                }
+
             }
 
             @Override
