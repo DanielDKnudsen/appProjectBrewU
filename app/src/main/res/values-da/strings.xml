@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BrewU</string>
+    <string name="SearchBrewTypeHint">Søg bryg type</string>
+    <string name="all_brews">Alle bryg</string>
+    <string name="average_rating">Gennemsnitlig bedømmelse</string>
+    <string name="log_out">Log ud</string>
+    <string name="my_brews">Mine bryg</string>
+    <string name="my_rating">Min bedømmelse</string>
+    <string name="notificationText">er bedømt. Ny gennemnistlig bedømmelse er:</string>
+    <string name="notificationTitle">Dit bryg er blevet bedømt</string>
+    <string name="see_brew_recipe">Se brygopskrift</string>
+</resources>
