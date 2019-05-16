@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/txtAllBrews"
-        android:layout_width="130dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/all_brews"
         android:textSize="30sp"
@@ -25,10 +25,12 @@
         android:layout_marginStart="98dp"
         android:layout_marginLeft="98dp"
         android:layout_marginTop="34dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginRight="98dp"
         android:ems="10"
+        android:hint="@string/SearchBrewTypeHint"
         android:inputType="textPersonName"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAllBrews" />
@@ -39,12 +41,13 @@
         android:layout_height="814dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchBrewType" />
 
     <ProgressBar
         android:id="@+id/loader"

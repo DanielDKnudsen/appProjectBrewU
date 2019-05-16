@@ -81,6 +81,7 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
         OriginalBrews = brewList;
     }
 
+    // Inspired from https://stackoverflow.com/questions/14118309/how-to-use-search-functionality-in-custom-list-view-in-android
     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
