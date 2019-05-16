@@ -68,8 +68,6 @@ public class BrewViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-
-                    task.getResult();
                     myBrews.setValue(task.getResult().toObjects(Brew.class));
                 } else {
                     Log.d("MyBrews", "Error getting documents: ", task.getException());

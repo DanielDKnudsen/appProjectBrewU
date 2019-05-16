@@ -74,6 +74,9 @@ public class BrewService extends Service {
 
                         for (DocumentChange dc : snapshots.getDocumentChanges()) {
                             switch (dc.getType()) {
+                                case ADDED:
+                                    String docId = dc.getDocument().getId();
+                                    db.collection("Brews").document("docId").update("id",docId);
                                 case MODIFIED:
                                     Brew brew = dc.getDocument().toObject(Brew.class);
                                     SendNotification(brew);
