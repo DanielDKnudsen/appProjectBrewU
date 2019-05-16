@@ -80,8 +80,7 @@ public class DetailedBrew extends Fragment {
         mViewModel.loadAllBrews();
         mViewModel.getAllBrews().observe(this, brews -> {
             for (Brew brew: brews) {
-                String test = brew.getId();
-                if (test.contains(brewId)) {
+                if (brew.getId().equals(brewId)) {
                     selectedBrew = brew;
                     myRatingSet = false;
                     Map<String, String> map = (Map)brew.getUserRatings();
