@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">BrewU</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
 
     <string name="my_brews">My brews</string>
     <string name="all_brews">All brews</string>
@@ -14,5 +12,5 @@
     <string name="see_brew_recipe">See brew recipe</string>
     <string name="SearchBrewTypeHint">Search Brew Type</string>
     <string name="notificationTitle">Someone rated your brew</string>
-    <string name="notificationText">Click here to see the rating</string>
+    <string name="notificationText">has been rated. New average rating is:</string>
 </resources>
