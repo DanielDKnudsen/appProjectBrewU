@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -118,31 +119,6 @@ public class BrewViewModel extends ViewModel {
                 });
     }
 
-    public void ListenToBrew() {
-        db.collection("Brews")
-                .whereEqualTo("userId", FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot snapshots,
-                                        @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            System.err.println("Listen failed: " + e);
-                            return;
-                        }
-
-                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                            switch (dc.getType()) {
-                                case MODIFIED:
-                                    Brew brew = dc.getDocument().toObject(Brew.class);
-                                    // TODO: Send notification
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                });
-    }
 
 
 }
