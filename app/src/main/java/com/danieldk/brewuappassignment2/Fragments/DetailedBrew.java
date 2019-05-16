@@ -47,6 +47,7 @@ public class DetailedBrew extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
         mViewModel.UpdateBrew(selectedBrew);
     }
 
@@ -58,6 +59,10 @@ public class DetailedBrew extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             brewId = bundle.getString("id");
+        }
+        else if(savedInstanceState != null)
+        {
+            brewId = savedInstanceState.getString("id");
         }
 
         return inflater.inflate(R.layout.detailed_brew_fragment, container, false);
@@ -101,22 +106,31 @@ public class DetailedBrew extends Fragment {
         myRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                myRating.setRating(rating);
-                Map<String, String> map = (Map)selectedBrew.getUserRatings();
-                float newAvgRating;
-                if (map.containsKey(user.getUid())) {
-                    float oldRating = Float.parseFloat(map.get(user.getUid()));
-                    newAvgRating = (
-                            selectedBrew.getAvgRating()*map.size()+rating-oldRating)/map.size();
-                } else {
-                    newAvgRating = (
-                            selectedBrew.getAvgRating()*map.size()+rating)/(map.size()+1);
+                if(selectedBrew!= null)
+                {
+                    myRating.setRating(rating);
+                    Map<String, String> map = (Map)selectedBrew.getUserRatings();
+                    float newAvgRating;
+                    if (map.containsKey(user.getUid())) {
+                        float oldRating = Float.parseFloat(map.get(user.getUid()));
+                        newAvgRating = (
+                                selectedBrew.getAvgRating()*map.size()+rating-oldRating)/map.size();
+                    } else {
+                        newAvgRating = (
+                                selectedBrew.getAvgRating()*map.size()+rating)/(map.size()+1);
+                    }
+                    map.put(user.getUid(), Float.toString(rating));
+                    avgRating.setRating(newAvgRating);
+                    selectedBrew.setUserRatings(map);
+                    selectedBrew.setAvgRating(avgRating.getRating());
                 }
-                map.put(user.getUid(), Float.toString(rating));
-                avgRating.setRating(newAvgRating);
-                selectedBrew.setUserRatings(map);
-                selectedBrew.setAvgRating(avgRating.getRating());
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("id", brewId);
     }
 }
