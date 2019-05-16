@@ -6,9 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.Serializable;
 import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,6 +43,10 @@ public class DetailedBrew extends Fragment {
     private Brew selectedBrew;
     private FirebaseUser user;
     private Boolean myRatingSet;
+    private Button btnDetailedStep;
+
+    private FragmentTransaction transaction;
+    private FragmentManager fragmentManager;
 
     public DetailedBrew() {
         // Required empty public constructor
@@ -73,6 +81,7 @@ public class DetailedBrew extends Fragment {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+        btnDetailedStep = view.findViewById(R.id.btnDetailedStep);
         txtBrewNameDetail = view.findViewById(R.id.txtBrewNameDetail);
         txtBrewTypeDetail = view.findViewById(R.id.txtBrewTypeDetail);
         avgRating = view.findViewById(R.id.avgRating);
@@ -95,6 +104,23 @@ public class DetailedBrew extends Fragment {
                     txtBrewTypeDetail.setText(brew.getBeerType());
                     avgRating.setRating(brew.getAvgRating());
                 }
+            }
+        });
+
+        btnDetailedStep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment detailedStepper = new DetailedStepper();
+                Bundle bundle = new Bundle();
+                bundle.putString("BrewId", selectedBrew.getId());
+                bundle.putString("BrewTitle", selectedBrew.getTitle());
+                detailedStepper.setArguments(bundle);
+
+                fragmentManager = getActivity().getSupportFragmentManager();
+                transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragmentContainer, detailedStepper);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
