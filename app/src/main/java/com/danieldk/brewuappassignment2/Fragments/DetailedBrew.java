@@ -20,6 +20,7 @@ import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -103,15 +104,17 @@ public class DetailedBrew extends Fragment {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 myRating.setRating(rating);
                 Map<String, String> map = (Map)selectedBrew.getUserRatings();
-                String oldRating;
+                float newAvgRating;
                 if (map.containsKey(user.getUid())) {
-                    oldRating = map.get(user.getUid());
+                    float oldRating = Float.parseFloat(map.get(user.getUid()));
+                    newAvgRating = (
+                            selectedBrew.getAvgRating()*map.size()+rating-oldRating)/map.size();
                 } else {
-                    oldRating = "0.0";
+                    newAvgRating = (
+                            selectedBrew.getAvgRating()*map.size()+rating)/(map.size()+1);
                 }
                 map.put(user.getUid(), Float.toString(rating));
-                float test = (selectedBrew.getAvgRating()*map.size())+rating-Float.parseFloat(oldRating)/map.size();
-                avgRating.setRating(((selectedBrew.getAvgRating()*map.size())+rating-Float.parseFloat(oldRating))/(map.size()));
+                avgRating.setRating(newAvgRating);
                 selectedBrew.setUserRatings(map);
                 selectedBrew.setAvgRating(avgRating.getRating());
             }

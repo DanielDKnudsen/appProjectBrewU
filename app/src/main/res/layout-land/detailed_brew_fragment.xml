@@ -48,7 +48,7 @@
         android:isIndicator="true"
         android:numStars="5"
         android:rating="3"
-        android:stepSize="1"
+        android:stepSize="0.1"
         app:layout_constraintStart_toStartOf="@+id/txtAvgRatingDetail"
         app:layout_constraintTop_toBottomOf="@+id/txtAvgRatingDetail" />
 
