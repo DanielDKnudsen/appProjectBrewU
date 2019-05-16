@@ -10,7 +10,6 @@
         <item name="android:buttonStyle">@style/buttonText</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
     <style name="buttonText" parent="Widget.AppCompat.Button">
