@@ -58,15 +58,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/description"
             android:layout_toRightOf="@+id/temperatureHint"
-            android:layout_marginRight="30dp"
-        android:text="Description" />
+            android:layout_marginRight="3dp"
+            android:text="@string/placeholder" />
 
         <TextView
             android:id="@+id/timeHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/description"
-            android:layout_toRightOf="@+id/temperature"
+            android:layout_toRightOf="@+id/celsius"
             android:layout_marginRight="5dp"
             android:text="@string/timeHint"
             android:textStyle="bold" />
@@ -77,7 +77,25 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/description"
             android:layout_toRightOf="@+id/timeHint"
-            android:text="Description" />
+            android:layout_marginRight="3dp"
+            android:text="@string/placeholder" />
+
+        <TextView
+            android:id="@+id/celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_toRightOf="@+id/temperature"
+            android:layout_marginRight="20dp"
+            android:text="@string/celsius" />
+
+        <TextView
+            android:id="@+id/minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_toRightOf="@+id/time"
+            android:text="@string/minutes"/>
 
     </RelativeLayout>
 

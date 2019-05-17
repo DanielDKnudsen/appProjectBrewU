@@ -17,4 +17,5 @@
     <string name="CreateBrewSave">Gem Bryg</string>
     <string name="CreateBrewTypeHint">Type af øl</string>
     <string name="createBeerTitle">Lav Brew Opskrift</string>
+    <string name="title">Titel</string>
 </resources>
