@@ -5,18 +5,14 @@ import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.Models.Step;
-import com.danieldk.brewuappassignment2.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -30,7 +26,6 @@ import javax.annotation.Nullable;
 public class BrewViewModel extends ViewModel {
     // Access a Cloud Firestore instance from your Activity
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private User user;
     private MutableLiveData<List<Brew>> allBrews;
     private MutableLiveData<List<Brew>> myBrews;
     private MutableLiveData<List<Step>> steps;
@@ -68,8 +63,6 @@ public class BrewViewModel extends ViewModel {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-
-                    task.getResult();
                     myBrews.setValue(task.getResult().toObjects(Brew.class));
                 } else {
                     Log.d("MyBrews", "Error getting documents: ", task.getException());

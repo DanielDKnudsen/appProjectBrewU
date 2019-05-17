@@ -10,4 +10,6 @@
     <string name="notificationText">er bedømt. Ny gennemnistlig bedømmelse er:</string>
     <string name="notificationTitle">Dit bryg er blevet bedømt</string>
     <string name="see_brew_recipe">Se brygopskrift</string>
+    <string name="timeHint">Tid:</string>
+    <string name="TemperatureHint">Temperatur:</string>
 </resources>
