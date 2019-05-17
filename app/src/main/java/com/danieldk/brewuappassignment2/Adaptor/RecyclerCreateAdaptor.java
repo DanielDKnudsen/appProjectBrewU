@@ -137,7 +137,13 @@ public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAd
     // Remove a RecyclerView item containing a specified Data object
     public void remove(Step step) {
         int position = mDataset.indexOf(step);
-        mDataset.remove(position);
+        mDataset.remove(step);
+        int i = 1;
+        for (Step data: mDataset
+             ) {
+            data.setStepOrder(i);
+            i++;
+        }
         notifyItemRemoved(position);
     }
 }

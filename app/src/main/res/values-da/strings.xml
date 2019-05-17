@@ -12,4 +12,9 @@
     <string name="see_brew_recipe">Se brygopskrift</string>
     <string name="timeHint">Tid:</string>
     <string name="TemperatureHint">Temperatur:</string>
+    <string name="ChooseBeerTitle">Indtast brygnavn</string>
+    <string name="CreateBrewDescriptionHint">Skriv en beskrivelse for bryg</string>
+    <string name="CreateBrewSave">Gem Bryg</string>
+    <string name="CreateBrewTypeHint">Type af øl</string>
+    <string name="createBeerTitle">Lav Brew Opskrift</string>
 </resources>
