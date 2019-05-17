@@ -13,6 +13,10 @@
             android:id="@+id/nav_allBrews"
             android:icon="@drawable/nav_allbrews"
             android:title="@string/all_brews" />
+        <item
+            android:id="@+id/nav_createBrew"
+            android:icon="@drawable/nav_create"
+            android:title="Create Brew" />
     </group>
     <group
         android:id="@+id/menu_bottom">

@@ -1,14 +1,11 @@
 package com.danieldk.brewuappassignment2.Adaptor;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.Models.Step;
@@ -16,7 +13,7 @@ import com.danieldk.brewuappassignment2.R;
 
 import java.util.List;
 
-public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyViewHolder> {
+public class RecyclerDetailsAdaptor extends RecyclerView.Adapter<RecyclerDetailsAdaptor.MyViewHolder> {
     private List<Step> mDataset;
     private Context context;
 
@@ -29,8 +26,6 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
         TextView temperature;
         TextView time;
 
-
-
         public MyViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cardView);
@@ -42,15 +37,15 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecyclerAdaptor(List<Step> myDataset, Context context) {
+    public RecyclerDetailsAdaptor(List<Step> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public RecyclerAdaptor.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public RecyclerDetailsAdaptor.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                  int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.detailed_step_item, parent, false);
         MyViewHolder holder = new MyViewHolder(v);
         return holder;
@@ -60,7 +55,7 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.title.setText("Step: " + String.valueOf(position+1));
+        holder.title.setText("Step: " + mDataset.get(position).getStepOrder());
         holder.description.setText(mDataset.get(position).getDescription());
         holder.temperature.setText(String.valueOf(mDataset.get(position).getTemperature()));
         holder.time.setText(String.valueOf(mDataset.get(position).getTime()));

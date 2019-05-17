@@ -1,6 +1,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewCreate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -24,60 +25,72 @@
             android:layout_marginRight="16dp" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titleCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageViewCreate"
             android:text="Title"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/descriptionCreate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:layout_toRightOf="@+id/imageViewCreate"
+            android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
-            android:text="Description" />
+            android:layout_toRightOf="@+id/imageViewCreate"
+            android:hint="@string/CreateBrewDescriptionHint"
+            android:inputType="textMultiLine"
+            android:layout_below="@id/titleCreate" />
 
         <TextView
-            android:id="@+id/temperatureHint"
+            android:id="@+id/temperatureHintCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
+            android:layout_below="@+id/descriptionCreate"
             android:layout_toRightOf="@+id/imageViewCreate"
             android:textStyle="bold"
             android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
             android:text="@string/TemperatureHint" />
 
-        <TextView
-            android:id="@+id/temperature"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/temperatureCreate"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:layout_toRightOf="@+id/temperatureHint"
+            android:layout_below="@+id/descriptionCreate"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="30dp"
-        android:text="Description" />
+            android:layout_toRightOf="@+id/temperatureHintCreate"
+            android:maxWidth="50dp"
+            android:inputType="number"
+            android:maxLength="4"
+            android:maxLines="1" />
 
         <TextView
-            android:id="@+id/timeHint"
+            android:id="@+id/timeHintCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:layout_toRightOf="@+id/temperature"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/descriptionCreate"
+            android:layout_toRightOf="@+id/temperatureCreate"
             android:layout_marginRight="5dp"
             android:text="@string/timeHint"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/timeCreate"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:layout_toRightOf="@+id/timeHint"
-            android:text="Description" />
+            android:layout_below="@+id/descriptionCreate"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/timeHintCreate"
+            android:inputType="number"
+            android:maxWidth="50dp"
+            android:maxLength="4"
+            android:maxLines="1" />
 
     </RelativeLayout>
 

@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -41,14 +42,7 @@ public class BrewViewModel extends ViewModel {
                     return;
                 }
                 if (value != null) {
-                    int i = 0;
-                    List<Brew> list;
-                    list = value.toObjects(Brew.class);
-                    for (QueryDocumentSnapshot document : value) {
-                        list.get(i).setId(document.getId());
-                        i++;
-                    }
-                    allBrews.setValue(list);
+                    allBrews.setValue(value.toObjects(Brew.class));
                 }
             }
         });
@@ -71,13 +65,19 @@ public class BrewViewModel extends ViewModel {
         });
     };
 
-    public void createBrew(Brew brew) {
-        db.collection("Brews").document()
-                .set(brew)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+    public void createBrew(Brew brew, List<Step> steps) {
+        db.collection("Brews")
+                .add(brew)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("Brew", "DocumentSnapshot successfully written!");
+                    public void onSuccess(DocumentReference documentReference) {
+                        brew.setId( documentReference.getId());
+                        db.collection("Brews").document(brew.getId()).set(brew);
+                        for (Step step: steps
+                             ) {
+                            step.setBrewId(brew.getId());
+                            db.collection("Steps").add(step);
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -133,7 +133,4 @@ public class BrewViewModel extends ViewModel {
             }
         });
     }
-
-
-
 }

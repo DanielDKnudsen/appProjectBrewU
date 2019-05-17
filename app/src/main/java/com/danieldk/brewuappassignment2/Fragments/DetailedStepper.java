@@ -2,33 +2,23 @@ package com.danieldk.brewuappassignment2.Fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.danieldk.brewuappassignment2.Adaptor.BrewAdaptor;
-import com.danieldk.brewuappassignment2.Adaptor.RecyclerAdaptor;
-import com.danieldk.brewuappassignment2.Models.Brew;
+import com.danieldk.brewuappassignment2.Adaptor.RecyclerDetailsAdaptor;
 import com.danieldk.brewuappassignment2.Models.Step;
 import com.danieldk.brewuappassignment2.R;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.nio.FloatBuffer;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 
 public class DetailedStepper extends Fragment {
@@ -39,7 +29,7 @@ public class DetailedStepper extends Fragment {
     private FirebaseUser user;
     private BrewViewModel mViewModel;
     private RecyclerView recyclerView;
-    private RecyclerAdaptor mAdapter;
+    private RecyclerDetailsAdaptor mAdapter;
     private List<Step> steps;
     private TextView txtBrewTitle;
 
@@ -80,7 +70,7 @@ public class DetailedStepper extends Fragment {
         mViewModel.loadSteps(brewId);
         mViewModel.getSteps().observe(this, steps -> {
             this.steps = steps;
-            mAdapter = new RecyclerAdaptor(steps, context);
+            mAdapter = new RecyclerDetailsAdaptor(steps, context);
             recyclerView.setAdapter(mAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
         });

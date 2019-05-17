@@ -23,6 +23,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import javax.annotation.Nullable;
 
 public class BrewService extends Service {
@@ -74,13 +77,12 @@ public class BrewService extends Service {
 
                         for (DocumentChange dc : snapshots.getDocumentChanges()) {
                             switch (dc.getType()) {
-                                case ADDED:
-                                    String docId = dc.getDocument().getId();
-                                    db.collection("Brews").document("docId").update("id",docId);
-                                    break;
                                 case MODIFIED:
                                     Brew brew = dc.getDocument().toObject(Brew.class);
-                                    SendNotification(brew);
+                                    if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
+                                    {
+                                        SendNotification(brew);
+                                    }
                                     break;
                                 default:
                                     break;
