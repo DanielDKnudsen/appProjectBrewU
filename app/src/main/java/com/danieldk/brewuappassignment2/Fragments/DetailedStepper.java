@@ -18,6 +18,7 @@ import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Collections;
 import java.util.List;
 
 
@@ -70,6 +71,7 @@ public class DetailedStepper extends Fragment {
         mViewModel.loadSteps(brewId);
         mViewModel.getSteps().observe(this, steps -> {
             this.steps = steps;
+            Collections.sort(this.steps, (item1, item2) -> Integer.valueOf(item1.getStepOrder()).compareTo(Integer.valueOf(item2.getStepOrder())));
             mAdapter = new RecyclerDetailsAdaptor(steps, context);
             recyclerView.setAdapter(mAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
