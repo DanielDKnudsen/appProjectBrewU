@@ -65,7 +65,7 @@
 
         <EditText
             android:id="@+id/temperatureCreate"
-            android:layout_width="50dp"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/descriptionCreate"
             android:layout_marginLeft="5dp"
@@ -73,7 +73,7 @@
             android:layout_toRightOf="@+id/temperatureHintCreate"
             android:inputType="number"
             android:maxWidth="50dp"
-            android:maxLength="4"
+            android:maxLength="5"
             android:maxLines="1"
             android:layout_toEndOf="@+id/temperatureHintCreate" />
 
@@ -92,14 +92,14 @@
 
         <EditText
             android:id="@+id/timeCreate"
-            android:layout_width="50dp"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/descriptionCreate"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/timeHintCreate"
             android:inputType="number"
             android:maxWidth="50dp"
-            android:maxLength="4"
+            android:maxLength="5"
             android:maxLines="1"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/timeHintCreate" />
