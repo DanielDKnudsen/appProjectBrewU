@@ -10,7 +10,7 @@
     <string name="average_rating">Average rating</string>
     <string name="my_rating">My rating</string>
     <string name="see_brew_recipe">See brew recipe</string>
-    <string name="SearchBrewTypeHint">Search Brew Type</string>
+    <string name="SearchBrewTypeHint">Search Type or Creator</string>
     <string name="notificationTitle">Someone rated your brew</string>
     <string name="notificationText">has been rated. New average rating is:</string>
     <string name="placeholder" translatable="false">Placeholder</string>
@@ -18,4 +18,7 @@
     <string name="timeHint">Time:</string>
     <string name="ChooseBeerTitle">ChooseBeerTitle</string>
     <string name="createBeerTitle">Create Beer Recipe</string>
+    <string name="CreateBrewTypeHint">Type of beer</string>
+    <string name="CreateBrewDescriptionHint">Write a description for brew</string>
+    <string name="CreateBrewSave">Save Brew</string>
 </resources>

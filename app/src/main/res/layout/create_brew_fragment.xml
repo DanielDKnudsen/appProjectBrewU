@@ -31,11 +31,11 @@
         android:layout_marginStart="179dp"
         android:layout_marginLeft="179dp"
         android:layout_marginTop="16dp"
-        android:textSize="40sp"
-        android:textStyle="bold"
         android:layout_marginEnd="179dp"
         android:layout_marginRight="179dp"
         android:text="@string/createBeerTitle"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,29 +48,45 @@
         android:layout_marginLeft="179dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="179dp"
+        android:gravity="center"
         android:layout_marginRight="179dp"
+        android:hint="@string/CreateBrewTypeHint"
+        android:minWidth="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBeerTitle" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewCreate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         tools:layout_editor_absoluteX="-29dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnCreateEmptyStep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="10dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBrewTitle" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/CreateBrewSave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

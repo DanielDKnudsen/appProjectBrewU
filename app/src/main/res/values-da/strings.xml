@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BrewU</string>
-    <string name="SearchBrewTypeHint">Søg bryg type</string>
+    <string name="SearchBrewTypeHint">Søg bryg type eller brygger</string>
     <string name="all_brews">Alle bryg</string>
     <string name="average_rating">Gennemsnitlig bedømmelse</string>
     <string name="log_out">Log ud</string>

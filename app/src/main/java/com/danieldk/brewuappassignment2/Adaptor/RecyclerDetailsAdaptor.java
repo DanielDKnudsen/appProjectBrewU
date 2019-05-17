@@ -55,7 +55,7 @@ public class RecyclerDetailsAdaptor extends RecyclerView.Adapter<RecyclerDetails
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.title.setText("Step: " + String.valueOf(position+1));
+        holder.title.setText("Step: " + mDataset.get(position).getStepOrder());
         holder.description.setText(mDataset.get(position).getDescription());
         holder.temperature.setText(String.valueOf(mDataset.get(position).getTemperature()));
         holder.time.setText(String.valueOf(mDataset.get(position).getTime()));

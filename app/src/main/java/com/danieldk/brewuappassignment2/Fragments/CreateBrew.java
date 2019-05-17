@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.danieldk.brewuappassignment2.Adaptor.RecyclerCreateAdaptor;
+import com.danieldk.brewuappassignment2.Models.Brew;
 import com.danieldk.brewuappassignment2.Models.Step;
 import com.danieldk.brewuappassignment2.R;
 import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
@@ -23,7 +27,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CreateBrew extends Fragment {
@@ -36,8 +43,8 @@ public class CreateBrew extends Fragment {
     private EditText txtBrewtype;
     private TextView txtBrewTitle;
     private RecyclerCreateAdaptor mAdapter;
-    private List<Step> steps;
     private FloatingActionButton btnCreateEmptyStep;
+    private Button btnSave;
 
     public CreateBrew() {
         // Required empty public constructor
@@ -59,10 +66,12 @@ public class CreateBrew extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
         user = FirebaseAuth.getInstance().getCurrentUser();
-        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerViewCreate);
+        txtBeerTitle = view.findViewById(R.id.txtBeerTitle);
         txtBrewTitle = view.findViewById(R.id.txtBrewTitle);
         txtBrewtype = view.findViewById(R.id.txtBrewType);
         btnCreateEmptyStep = view.findViewById(R.id.btnCreateEmptyStep);
+        btnSave = view.findViewById(R.id.btnSave);
         List<Step> newList = new ArrayList<Step>();
 
         mAdapter = new RecyclerCreateAdaptor(newList, context);
@@ -73,6 +82,27 @@ public class CreateBrew extends Fragment {
             @Override
             public void onClick(View v) {
                 mAdapter.insert(mAdapter.getItemCount(), new Step());
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Brew brew = new Brew();
+                brew.setAvgRating(0);
+                Map<String, String> map = new HashMap<>();
+                map.put(user.getUid(), "0");
+                brew.setUserRatings(map);
+                brew.setBeerType(txtBrewtype.getText().toString());
+                brew.setTitle(txtBeerTitle.getText().toString());
+                brew.setUserId(user.getUid());
+                brew.setUsername(user.getDisplayName());
+                brew.setCreationDate(new Date());
+
+                mViewModel.createBrew(brew, mAdapter.getSteps());
+
+                Toast toast = Toast.makeText(context,"Brew Created",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
     }

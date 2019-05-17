@@ -101,7 +101,11 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
                     constraint = constraint.toString().toLowerCase();
                     for (int i = 0; i < OriginalBrews.size(); i++) {
                         String data = OriginalBrews.get(i).getBeerType();
-                        if (data.toLowerCase().startsWith(constraint.toString())) {
+                        String username = OriginalBrews.get(i).getUsername();
+                        if (data.toLowerCase().contains(constraint.toString())) {
+                            Filtered.add(OriginalBrews.get(i));
+                        } else if (username.toLowerCase().contains(constraint.toString()))
+                        {
                             Filtered.add(OriginalBrews.get(i));
                         }
                     }
