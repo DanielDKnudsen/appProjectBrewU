@@ -140,7 +140,4 @@ public class BrewViewModel extends ViewModel {
             }
         });
     }
-
-
-
 }

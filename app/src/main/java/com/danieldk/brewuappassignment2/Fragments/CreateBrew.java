@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.List;
 
 
-public class DetailedStepper extends Fragment {
+public class CreateBrew extends Fragment {
 
     private Context context;
     private String brewId;
@@ -33,7 +32,7 @@ public class DetailedStepper extends Fragment {
     private List<Step> steps;
     private TextView txtBrewTitle;
 
-    public DetailedStepper() {
+    public CreateBrew() {
         // Required empty public constructor
     }
 
@@ -62,19 +61,6 @@ public class DetailedStepper extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
         user = FirebaseAuth.getInstance().getCurrentUser();
-
-        txtBrewTitle = view.findViewById(R.id.txtBrewTitle);
         recyclerView = view.findViewById(R.id.recyclerView);
-
-        txtBrewTitle.setText(brewTitle);
-        mViewModel.loadSteps(brewId);
-        mViewModel.getSteps().observe(this, steps -> {
-            this.steps = steps;
-            mAdapter = new RecyclerDetailsAdaptor(steps, context);
-            recyclerView.setAdapter(mAdapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        });
     }
-
-
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,12 +14,10 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Fragments.AllBrews;
-import com.danieldk.brewuappassignment2.Fragments.DetailedBrew;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -91,6 +88,10 @@ public class NavigationMenu extends AppCompatActivity
         } else if (id == R.id.nav_allBrews) {
             Fragment allBrews = new AllBrews();
             transaction.replace(R.id.fragmentContainer, allBrews);
+
+        } else if (id == R.id.nav_createBrew) {
+            Fragment createBrew = new CreateBrew();
+            transaction.replace(R.id.fragmentContainer, createBrew);
 
         } else if (id == R.id.nav_logOut) {
             FirebaseAuth.getInstance().signOut();

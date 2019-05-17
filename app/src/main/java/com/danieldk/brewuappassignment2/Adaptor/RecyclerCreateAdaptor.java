@@ -1,14 +1,12 @@
 package com.danieldk.brewuappassignment2.Adaptor;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.danieldk.brewuappassignment2.Models.Step;
@@ -16,25 +14,22 @@ import com.danieldk.brewuappassignment2.R;
 
 import java.util.List;
 
-public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyViewHolder> {
+public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAdaptor.CreateViewHolder> {
+    private EditText title;
     private List<Step> mDataset;
     private Context context;
 
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class CreateViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         CardView cv;
-        TextView title;
-        TextView description;
-        TextView temperature;
-        TextView time;
+        EditText description;
+        EditText temperature;
+        EditText time;
 
-
-
-        public MyViewHolder(View itemView) {
+        public CreateViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cardView);
-            title = (TextView) itemView.findViewById(R.id.title);
             temperature = itemView.findViewById(R.id.temperature);
             time = itemView.findViewById(R.id.time);
             description = (TextView) itemView.findViewById(R.id.description);
@@ -42,25 +37,24 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.MyView
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecyclerAdaptor(List<Step> myDataset, Context context) {
+    public RecyclerCreateAdaptor(List<Step> myDataset, Context context) {
         mDataset = myDataset;
         this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public RecyclerAdaptor.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public RecyclerCreateAdaptor.CreateViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                  int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.detailed_step_item, parent, false);
-        MyViewHolder holder = new MyViewHolder(v);
+        CreateViewHolder holder = new CreateViewHolder(v);
         return holder;
 
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.title.setText("Step: " + String.valueOf(position+1));
+    public void onBindViewHolder(CreateViewHolder holder, int position) {
         holder.description.setText(mDataset.get(position).getDescription());
         holder.temperature.setText(String.valueOf(mDataset.get(position).getTemperature()));
         holder.time.setText(String.valueOf(mDataset.get(position).getTime()));
