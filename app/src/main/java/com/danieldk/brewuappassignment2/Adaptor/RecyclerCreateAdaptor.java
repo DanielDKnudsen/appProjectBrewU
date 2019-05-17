@@ -15,7 +15,6 @@ import com.danieldk.brewuappassignment2.R;
 import java.util.List;
 
 public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAdaptor.CreateViewHolder> {
-    private EditText title;
     private List<Step> mDataset;
     private Context context;
 
@@ -29,10 +28,10 @@ public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAd
 
         public CreateViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cardView);
+            cv = itemView.findViewById(R.id.cardView);
             temperature = itemView.findViewById(R.id.temperature);
             time = itemView.findViewById(R.id.time);
-            description = (TextView) itemView.findViewById(R.id.description);
+            description = itemView.findViewById(R.id.description);
         }
     }
 
@@ -82,7 +81,5 @@ public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAd
         mDataset.remove(position);
         notifyItemRemoved(position);
     }
-
-
 }
 
