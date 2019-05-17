@@ -74,21 +74,24 @@ public class BrewService extends Service {
                             System.err.println("Listen failed: " + e);
                             return;
                         }
-
+                        Brew brew = new Brew();
                         for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                            switch (dc.getType()) {
-                                case MODIFIED:
-                                    Brew brew = dc.getDocument().toObject(Brew.class);
-                                    if (brew.getCreationDate() == null) {
-                                        SendNotification(brew);
-                                    }
-                                    else if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
-                                    {
-                                        SendNotification(brew);
-                                    }
-                                    break;
-                                default:
-                                    break;
+                            if (dc.getDocument().toObject(Brew.class) != brew)
+                            {
+                                brew = dc.getDocument().toObject(Brew.class);
+                                switch (dc.getType()) {
+                                    case MODIFIED:
+                                        if (brew.getCreationDate() == null) {
+                                            SendNotification(brew);
+                                        }
+                                        else if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
+                                        {
+                                            SendNotification(brew);
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                     }

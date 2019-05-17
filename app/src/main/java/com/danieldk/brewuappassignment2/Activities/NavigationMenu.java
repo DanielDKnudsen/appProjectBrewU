@@ -80,6 +80,9 @@ public class NavigationMenu extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        for(int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
+            fragmentManager.popBackStack();
+        }
         transaction = fragmentManager.beginTransaction();
 
         if (id == R.id.nav_myBrews) {

@@ -88,6 +88,7 @@ public class MyBrews extends Fragment {
                 fragmentManager = getActivity().getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.fragmentContainer, detailedBrew);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
