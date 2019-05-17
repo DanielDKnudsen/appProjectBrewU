@@ -21,4 +21,7 @@
     <string name="CreateBrewTypeHint">Type of beer</string>
     <string name="CreateBrewDescriptionHint">Write a description for brew</string>
     <string name="CreateBrewSave">Save Brew</string>
+    <string name="title">Title</string>
+    <string name="celsius" translatable="false">℃</string>
+    <string name="minutes" translatable="false">min</string>
 </resources>
