@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/CreateBrewSave"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
