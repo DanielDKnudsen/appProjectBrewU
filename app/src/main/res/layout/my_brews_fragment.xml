@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/my_brews"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAllCaps="true"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginLeft="156dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="156dp"
         android:layout_marginRight="156dp"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMyBrews" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMyBrews"
+        tools:text="@string/placeholder" />
 
     <ListView
         android:id="@+id/listMyBrews"

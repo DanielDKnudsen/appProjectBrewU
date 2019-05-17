@@ -22,39 +22,46 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="16dp" />
 
         <TextView
             android:id="@+id/titleCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageViewCreate"
-            android:text="Title"
             android:layout_marginBottom="10dp"
-            android:textSize="30sp" />
+            android:layout_toRightOf="@+id/imageViewCreate"
+            android:text="@string/title"
+            android:textSize="30sp"
+            android:layout_toEndOf="@+id/imageViewCreate" />
 
         <EditText
             android:id="@+id/descriptionCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/titleCreate"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
             android:layout_toRightOf="@+id/imageViewCreate"
             android:hint="@string/CreateBrewDescriptionHint"
             android:inputType="textMultiLine"
-            android:layout_below="@id/titleCreate" />
+            android:layout_marginEnd="30dp"
+            android:layout_toEndOf="@+id/imageViewCreate" />
 
         <TextView
             android:id="@+id/temperatureHintCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/descriptionCreate"
-            android:layout_toRightOf="@+id/imageViewCreate"
-            android:textStyle="bold"
-            android:layout_marginRight="5dp"
             android:layout_marginTop="20dp"
-            android:text="@string/TemperatureHint" />
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/imageViewCreate"
+            android:text="@string/TemperatureHint"
+            android:textStyle="bold"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/imageViewCreate" />
 
         <EditText
             android:id="@+id/temperatureCreate"
@@ -62,23 +69,26 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/descriptionCreate"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/temperatureHintCreate"
-            android:maxWidth="50dp"
             android:inputType="number"
+            android:maxWidth="50dp"
             android:maxLength="4"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:layout_toEndOf="@+id/temperatureHintCreate" />
 
         <TextView
             android:id="@+id/timeHintCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_below="@+id/descriptionCreate"
-            android:layout_toRightOf="@+id/temperatureCreate"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/celsius"
             android:text="@string/timeHint"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@+id/celsius" />
 
         <EditText
             android:id="@+id/timeCreate"
@@ -90,7 +100,33 @@
             android:inputType="number"
             android:maxWidth="50dp"
             android:maxLength="4"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/timeHintCreate" />
+
+        <TextView
+            android:id="@+id/celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descriptionCreate"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:layout_toRightOf="@+id/temperatureCreate"
+            android:text="@string/celsius"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@+id/temperatureCreate" />
+
+        <TextView
+            android:id="@+id/minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descriptionCreate"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/timeCreate"
+            android:text="@string/minutes"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/timeCreate" />
 
     </RelativeLayout>
 
