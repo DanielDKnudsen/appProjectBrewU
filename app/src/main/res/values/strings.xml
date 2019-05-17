@@ -16,8 +16,8 @@
     <string name="placeholder" translatable="false">Placeholder</string>
     <string name="TemperatureHint">Temperature:</string>
     <string name="timeHint">Time:</string>
-    <string name="ChooseBeerTitle">ChooseBeerTitle</string>
-    <string name="createBeerTitle">Create Beer Recipe</string>
+    <string name="ChooseBeerTitle">Choose beer title</string>
+    <string name="createBeerTitle">Create Brew Recipe</string>
     <string name="CreateBrewTypeHint">Type of beer</string>
     <string name="CreateBrewDescriptionHint">Write a description for brew</string>
     <string name="CreateBrewSave">Save Brew</string>

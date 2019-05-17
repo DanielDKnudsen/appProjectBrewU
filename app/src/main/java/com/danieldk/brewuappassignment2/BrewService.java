@@ -79,7 +79,10 @@ public class BrewService extends Service {
                             switch (dc.getType()) {
                                 case MODIFIED:
                                     Brew brew = dc.getDocument().toObject(Brew.class);
-                                    if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
+                                    if (brew.getCreationDate() == null) {
+                                        SendNotification(brew);
+                                    }
+                                    else if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
                                     {
                                         SendNotification(brew);
                                     }

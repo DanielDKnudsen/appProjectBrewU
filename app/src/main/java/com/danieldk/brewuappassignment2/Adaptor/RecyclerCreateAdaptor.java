@@ -138,6 +138,12 @@ public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAd
     public void remove(Step step) {
         int position = mDataset.indexOf(step);
         mDataset.remove(position);
+        int i = 1;
+        for (Step data: mDataset
+             ) {
+            data.setStepOrder(i);
+            i++;
+        }
         notifyItemRemoved(position);
     }
 }
