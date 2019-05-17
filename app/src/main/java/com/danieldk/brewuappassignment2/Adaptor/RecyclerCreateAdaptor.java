@@ -63,6 +63,17 @@ public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAd
     @Override
     public void onBindViewHolder(CreateViewHolder holder, int position) {
         holder.title.setText("Step: " + mDataset.get(position).getStepOrder());
+        if (mDataset.get(position) != null) {
+            if (mDataset.get(position).getDescription() != null) {
+                holder.description.setText(mDataset.get(position).getDescription());
+            }
+            if (mDataset.get(position).getTime() != -1) {
+                holder.time.setText(Integer.toString(mDataset.get(position).getTime()));
+            }
+            if (mDataset.get(position).getTemperature() != -1){
+                holder.temperature.setText(Integer.toString(mDataset.get(position).getTemperature()));
+            }
+        }
 
         holder.description.addTextChangedListener(new TextWatcher() {
 

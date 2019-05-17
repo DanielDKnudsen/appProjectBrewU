@@ -25,6 +25,7 @@ import com.danieldk.brewuappassignment2.ViewModels.BrewViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -74,6 +75,12 @@ public class CreateBrew extends Fragment {
         btnSave = view.findViewById(R.id.btnSave);
         List<Step> newList = new ArrayList<Step>();
 
+        if (savedInstanceState != null) {
+            txtBeerTitle.setText(savedInstanceState.getString("BrewTitle"));
+            txtBrewtype.setText(savedInstanceState.getString("BrewTitle"));
+            newList = (List<Step>)savedInstanceState.getSerializable("Steps");
+        }
+
         mAdapter = new RecyclerCreateAdaptor(newList, context);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -81,7 +88,10 @@ public class CreateBrew extends Fragment {
         btnCreateEmptyStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter.insert(mAdapter.getItemCount(), new Step());
+                Step step = new Step();
+                step.setTime(-1);
+                step.setTemperature(-1);
+                mAdapter.insert(mAdapter.getItemCount(), step);
             }
         });
 
@@ -105,5 +115,13 @@ public class CreateBrew extends Fragment {
                 toast.show();
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("Steps", (Serializable) mAdapter.getSteps());
+        outState.putString("BrewType", txtBrewtype.getText().toString());
+        outState.putString("BrewTitle", txtBeerTitle.getText().toString());
     }
 }

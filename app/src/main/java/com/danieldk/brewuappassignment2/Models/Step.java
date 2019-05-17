@@ -1,6 +1,8 @@
 package com.danieldk.brewuappassignment2.Models;
 
-public class Step {
+import java.io.Serializable;
+
+public class Step implements Serializable {
     private String brewId;
     private String description;
     private int stepOrder;
