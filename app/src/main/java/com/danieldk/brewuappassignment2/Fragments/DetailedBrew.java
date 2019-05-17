@@ -122,6 +122,7 @@ public class DetailedBrew extends Fragment {
                 fragmentManager = getActivity().getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.fragmentContainer, detailedStepper);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
