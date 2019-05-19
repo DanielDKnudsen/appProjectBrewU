@@ -110,7 +110,7 @@ public class CreateBrew extends Fragment {
 
                 mViewModel.createBrew(brew, mAdapter.getSteps());
 
-                Toast toast = Toast.makeText(context,"Brew Created",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context,R.string.brew_created,Toast.LENGTH_SHORT);
                 toast.show();
             }
         });

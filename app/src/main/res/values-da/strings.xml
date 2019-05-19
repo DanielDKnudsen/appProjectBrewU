@@ -19,4 +19,5 @@
     <string name="createBeerTitle">Lav Brew Opskrift</string>
     <string name="title">Titel</string>
     <string name="create_brew">Lav Brew</string>
+    <string name="brew_created">Dit bryg er blevet oprettet</string>
 </resources>
