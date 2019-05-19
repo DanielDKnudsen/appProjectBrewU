@@ -7,13 +7,28 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/listcontainer"
-        android:layout_width="match_parent"
+        android:layout_width="550dp"
+        android:layout_marginTop="50dp"
         android:layout_height="match_parent">
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/detailcontainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
