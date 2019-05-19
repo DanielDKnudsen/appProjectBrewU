@@ -31,6 +31,7 @@ public class BrewViewModel extends ViewModel {
     private MutableLiveData<List<Brew>> myBrews;
     private MutableLiveData<List<Step>> steps;
 
+    //Gets all brews from firestore - also listens to changes in database and runs with every change
     public void loadAllBrews(){
         // looked at documentation https://firebase.google.com/docs/firestore/query-data/listen
         allBrews = new MutableLiveData<>();
@@ -49,6 +50,7 @@ public class BrewViewModel extends ViewModel {
         });
     };
 
+    // Loads all brews for user logged ind from the database
     public void loadMyBrews(){
         myBrews = new MutableLiveData<>();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -66,10 +68,12 @@ public class BrewViewModel extends ViewModel {
         });
     };
 
+    //Creates a new brew with steps in each document.
     public void createBrew(Brew brew, List<Step> steps) {
         db.collection("Brews")
                 .add(brew)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    // if brew is updated - insert steps
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         brew.setId( documentReference.getId());
@@ -100,6 +104,7 @@ public class BrewViewModel extends ViewModel {
         return steps;
     }
 
+    // updates a single brew if it is in database - else creates one
     public void UpdateBrew(Brew brew) {
         db.collection("Brews")
                 .document(brew.getId())
@@ -118,6 +123,7 @@ public class BrewViewModel extends ViewModel {
                 });
     }
 
+    // Gets all steps for brew
     public void loadSteps(String brewId) {
         steps = new MutableLiveData<>();
         db.collection("Steps")

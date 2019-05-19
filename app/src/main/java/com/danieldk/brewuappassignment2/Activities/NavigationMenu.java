@@ -167,6 +167,7 @@ public class NavigationMenu extends AppCompatActivity
         return true;
     }
 
+    // Checks if device is a tablet or veeeery big. If so handle layout  as so.
     public boolean checkSize()
     {
         if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)

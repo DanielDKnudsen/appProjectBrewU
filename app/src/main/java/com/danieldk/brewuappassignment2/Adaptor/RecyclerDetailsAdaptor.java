@@ -74,18 +74,6 @@ public class RecyclerDetailsAdaptor extends RecyclerView.Adapter<RecyclerDetails
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public void insert(int position, Step step) {
-        mDataset.add(position, step);
-        notifyItemInserted(position);
-    }
-
-    // Remove a RecyclerView item containing a specified Data object
-    public void remove(Step step) {
-        int position = mDataset.indexOf(step);
-        mDataset.remove(position);
-        notifyItemRemoved(position);
-    }
-
 
 }
 

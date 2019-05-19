@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 Intent intent = new Intent(this, NavigationMenu.class);
+                // Finish current activity to remove activity from BackStack.
                 finish();
                 startActivity(intent);
             } else {

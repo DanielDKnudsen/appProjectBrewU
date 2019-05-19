@@ -44,7 +44,7 @@ public class BrewService extends Service {
 
     public void SendNotification(Brew brew)
     {
-        // Inspireret af ServicesDemo
+        // Inspirered by ServicesDemo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL, "channelName", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -63,6 +63,7 @@ public class BrewService extends Service {
         startForeground(NOTIFICATION_ID,notification);
     }
 
+    // When a document in our database for "Brews" is edited we want to notify the user who created the brew: This method does that
     public void ListenToBrew() {
         db.collection("Brews")
                 .whereEqualTo("userId", FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -74,6 +75,7 @@ public class BrewService extends Service {
                             System.err.println("Listen failed: " + e);
                             return;
                         }
+                        // Create new brew to make sure we only notify once even if same document is changed several times
                         Brew brew = new Brew();
                         for (DocumentChange dc : snapshots.getDocumentChanges()) {
                             if (dc.getDocument().toObject(Brew.class) != brew)
@@ -81,9 +83,11 @@ public class BrewService extends Service {
                                 brew = dc.getDocument().toObject(Brew.class);
                                 switch (dc.getType()) {
                                     case MODIFIED:
+                                        // Check if we already notified the brew. Also not the ideal way
                                         if (brew.getCreationDate() == null) {
                                             SendNotification(brew);
                                         }
+                                        // Check if brew is just created in last 3 seconds - if so, dont notify user. This is not the ideal way, but is works
                                         else if (!(TimeUnit.MILLISECONDS.toSeconds(brew.getCreationDate().getTime())+3 > TimeUnit.MILLISECONDS.toSeconds(new Date().getTime())))
                                         {
                                             SendNotification(brew);

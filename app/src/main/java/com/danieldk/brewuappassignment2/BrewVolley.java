@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -58,7 +59,8 @@ public class BrewVolley {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //txtResponse.setText("That didn't work! ");
+                Toast toast = Toast.makeText(context,"Couldn't retrieve beer-types",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 

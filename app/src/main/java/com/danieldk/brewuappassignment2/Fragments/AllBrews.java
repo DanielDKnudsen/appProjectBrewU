@@ -40,12 +40,10 @@ public class AllBrews extends Fragment {
 
     private BrewViewModel mViewModel;
     private ListView listViewAllBeers;
-    private List<Brew> brewList;
     private BrewAdaptor brewAdaptor;
     private ProgressBar loader;
     private Context context;
     private AutoCompleteTextView searchBrew;
-    private BroadcastReceiver broadcastReceiver;
 
     private FragmentTransaction transaction;
     private FragmentManager fragmentManager;
