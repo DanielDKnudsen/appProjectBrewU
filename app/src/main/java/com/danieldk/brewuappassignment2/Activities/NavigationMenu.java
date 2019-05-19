@@ -56,23 +56,25 @@ public class NavigationMenu extends AppCompatActivity
         else{
             transaction = fragmentManager.beginTransaction();
             if (fragments.isEmpty()) {
-                transaction.add(R.id.listcontainer,myBrews);
+                if(checkLandscape())
+                    transaction.add(R.id.listcontainer,myBrews);
+                else transaction.add(R.id.fragmentContainer,myBrews);
             }
             else{
                 for (Fragment fragment:fragments) {
                     transaction.remove(fragment);
                 }
+                Fragment fragment = fragments.get(0);
                 if(checkLandscape())
                 {
                     //Not the right way to do this
-                    transaction.add(R.id.listcontainer,myBrews);
+                    transaction.add(R.id.listcontainer,fragment);
                 }
                 else{
-                    transaction.add(R.id.fragmentContainer,fragments.get(0));
+                    transaction.add(R.id.fragmentContainer,fragment);
                 }
             }
             transaction.commit();
-
         }
         setSupportActionBar(toolbar);
 
@@ -117,14 +119,14 @@ public class NavigationMenu extends AppCompatActivity
         if (id == R.id.nav_myBrews) {
             Fragment myBrews = new MyBrews();
             if(checkSize()&&checkSize())
-                transaction.add(R.id.listcontainer,myBrews);
+                transaction.replace(R.id.listcontainer,myBrews);
             else
                  transaction.replace(R.id.fragmentContainer, myBrews);
 
         } else if (id == R.id.nav_allBrews) {
             Fragment allBrews = new AllBrews();
             if(checkSize()&&checkLandscape())
-                transaction.add(R.id.listcontainer,allBrews);
+                transaction.replace(R.id.listcontainer,allBrews);
             else
                 transaction.replace(R.id.fragmentContainer, allBrews);
 

@@ -121,9 +121,10 @@ public class AllBrews extends Fragment {
 
                 fragmentManager = getActivity().getSupportFragmentManager();
                 transaction = fragmentManager.beginTransaction();
-                if ((getResources().getConfiguration().screenLayout &
-                        Configuration.SCREENLAYOUT_SIZE_MASK) ==
-                        Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                Configuration config = getResources().getConfiguration();
+
+                if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE &&
+                        config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                     transaction.replace(R.id.detailcontainer,detailedBrew);
                 }
                 else{
