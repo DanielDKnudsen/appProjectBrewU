@@ -24,4 +24,5 @@
     <string name="celsius" translatable="false">℃</string>
     <string name="minutes" translatable="false">min</string>
     <string name="placeholder" translatable="false">Placeholder</string>
+    <string name="create_brew">Create Brew</string>
 </resources>

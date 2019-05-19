@@ -18,4 +18,5 @@
     <string name="CreateBrewTypeHint">Type af øl</string>
     <string name="createBeerTitle">Lav Brew Opskrift</string>
     <string name="title">Titel</string>
+    <string name="create_brew">Lav Brew</string>
 </resources>
