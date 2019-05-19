@@ -1,6 +1,7 @@
 package com.danieldk.brewuappassignment2.Activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.danieldk.brewuappassignment2.BrewService;
 import com.danieldk.brewuappassignment2.Fragments.AllBrews;
 import com.danieldk.brewuappassignment2.Fragments.CreateBrew;
+import com.danieldk.brewuappassignment2.Fragments.DetailedBrew;
 import com.danieldk.brewuappassignment2.Fragments.MyBrews;
 import com.danieldk.brewuappassignment2.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,22 +33,46 @@ public class NavigationMenu extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
+    private Configuration config;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        config = getResources().getConfiguration();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
         fragmentManager = this.getSupportFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
-        if(fragments.isEmpty()) {
+        Fragment myBrews = new MyBrews();
+
+        if(!checkSize())
+        {
+            if(fragments.isEmpty()) {
+                transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.fragmentContainer, myBrews);
+                transaction.commit();
+            }
+        }
+        else{
             transaction = fragmentManager.beginTransaction();
-            Fragment myBrews = new MyBrews();
-            transaction.add(R.id.fragmentContainer, myBrews);
+            if (fragments.isEmpty()) {
+                transaction.add(R.id.listcontainer,myBrews);
+            }
+            else{
+                for (Fragment fragment:fragments) {
+                    transaction.remove(fragment);
+                }
+                if(checkLandscape())
+                {
+                    //Not the right way to do this
+                    transaction.add(R.id.listcontainer,myBrews);
+                }
+                else{
+                    transaction.add(R.id.fragmentContainer,fragments.get(0));
+                }
+            }
             transaction.commit();
+
         }
         setSupportActionBar(toolbar);
 
@@ -55,7 +81,7 @@ public class NavigationMenu extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         TextView menuUserName = headerView.findViewById(R.id.txtMenuUserName);
-        menuUserName.setText(user.getDisplayName());
+        menuUserName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -84,14 +110,23 @@ public class NavigationMenu extends AppCompatActivity
             fragmentManager.popBackStack();
         }
         transaction = fragmentManager.beginTransaction();
+        for (Fragment fragment:getSupportFragmentManager().getFragments()) {
+                transaction.remove(fragment);
+        }
 
         if (id == R.id.nav_myBrews) {
             Fragment myBrews = new MyBrews();
-            transaction.replace(R.id.fragmentContainer, myBrews);
+            if(checkSize()&&checkSize())
+                transaction.add(R.id.listcontainer,myBrews);
+            else
+                 transaction.replace(R.id.fragmentContainer, myBrews);
 
         } else if (id == R.id.nav_allBrews) {
             Fragment allBrews = new AllBrews();
-            transaction.replace(R.id.fragmentContainer, allBrews);
+            if(checkSize()&&checkLandscape())
+                transaction.add(R.id.listcontainer,allBrews);
+            else
+                transaction.replace(R.id.fragmentContainer, allBrews);
 
         } else if (id == R.id.nav_createBrew) {
             Fragment createBrew = new CreateBrew();
@@ -106,6 +141,20 @@ public class NavigationMenu extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public boolean checkSize()
+    {
+        if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)
+            return true;
+        return false;
+    }
+
+    public boolean checkLandscape()
+    {
+     if(config.orientation == Configuration.ORIENTATION_LANDSCAPE)
+         return true;
+     else return false;
     }
 
 }
