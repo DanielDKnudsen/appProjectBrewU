@@ -61,17 +61,23 @@ public class NavigationMenu extends AppCompatActivity
                 else transaction.add(R.id.fragmentContainer,myBrews);
             }
             else{
-                for (Fragment fragment:fragments) {
-                    transaction.remove(fragment);
-                }
-                Fragment fragment = fragments.get(0);
                 if(checkLandscape())
                 {
-                    //Not the right way to do this
-                    transaction.add(R.id.listcontainer,fragment);
+                    for (Fragment frag: fragments
+                    ) {
+                        fragmentManager.beginTransaction().remove(frag).commit();
+                        fragmentManager.executePendingTransactions();
+                    }
+                    fragmentManager.beginTransaction().add(R.id.listcontainer, myBrews).commit();
                 }
                 else{
-                    transaction.add(R.id.fragmentContainer,fragment);
+                    for (Fragment frag: fragments
+                    ) {
+                    fragmentManager.beginTransaction().remove(frag).commit();
+                    fragmentManager.executePendingTransactions();
+                    }
+                    fragmentManager.beginTransaction().add(R.id.fragmentContainer, myBrews).commit();
+
                 }
             }
             transaction.commit();
@@ -91,6 +97,22 @@ public class NavigationMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         startService(new Intent(this, BrewService.class));
+    }
+
+    private Fragment recreateFragment(Fragment f)
+    {
+        try {
+            Fragment.SavedState savedState = fragmentManager.saveFragmentInstanceState(f);
+
+            Fragment newInstance = f.getClass().newInstance();
+            newInstance.setInitialSavedState(savedState);
+
+            return newInstance;
+        }
+        catch (Exception e) // InstantiationException, IllegalAccessException
+        {
+            throw new RuntimeException("Cannot reinstantiate fragment " + f.getClass().getName(), e);
+        }
     }
 
     @Override
@@ -154,7 +176,7 @@ public class NavigationMenu extends AppCompatActivity
 
     public boolean checkLandscape()
     {
-     if(config.orientation == Configuration.ORIENTATION_LANDSCAPE)
+     if(config. orientation == Configuration.ORIENTATION_LANDSCAPE)
          return true;
      else return false;
     }
