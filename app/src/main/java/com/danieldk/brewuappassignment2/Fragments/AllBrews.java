@@ -66,13 +66,6 @@ public class AllBrews extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        // TODO: Use the ViewModel
-    }
-
-    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(BrewViewModel.class);
         listViewAllBeers = view.findViewById(R.id.listAllBrews);
@@ -102,11 +95,11 @@ public class AllBrews extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //update filter when typing in search field
                 if(brewAdaptor != null)
                 {
                     brewAdaptor.getFilter().filter(s.toString());
                 }
-
             }
 
             @Override

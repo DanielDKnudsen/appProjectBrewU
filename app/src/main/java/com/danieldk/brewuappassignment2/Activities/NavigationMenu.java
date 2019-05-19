@@ -78,7 +78,7 @@ public class NavigationMenu extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // used documentation for using fragments https://developer.android.com/training/basics/fragments/fragment-ui
         int id = item.getItemId();
         for(int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
             fragmentManager.popBackStack();

@@ -109,7 +109,7 @@ public class DetailedBrew extends Fragment {
                 }
             }
         });
-
+        //Navigate to detailedStepper
         btnDetailedStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

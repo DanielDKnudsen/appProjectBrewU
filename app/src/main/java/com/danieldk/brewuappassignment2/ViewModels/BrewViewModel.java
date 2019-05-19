@@ -25,13 +25,14 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class BrewViewModel extends ViewModel {
-    // Access a Cloud Firestore instance from your Activity
+    // inspiration from https://developer.android.com/topic/libraries/architecture/viewmodel
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private MutableLiveData<List<Brew>> allBrews;
     private MutableLiveData<List<Brew>> myBrews;
     private MutableLiveData<List<Step>> steps;
 
     public void loadAllBrews(){
+        // looked at documentation https://firebase.google.com/docs/firestore/query-data/listen
         allBrews = new MutableLiveData<>();
         db.collection("Brews").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
