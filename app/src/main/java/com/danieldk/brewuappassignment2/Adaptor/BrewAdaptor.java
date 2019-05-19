@@ -24,7 +24,7 @@ public class BrewAdaptor extends BaseAdapter implements Filterable {
     private Brew brew;
     private List<Brew> OriginalBrews;
     private List<Brew> FilteredBrews;
-
+    //found inspiration from movie app project
     public BrewAdaptor(Context context, List<Brew> brews)
     {
         this.context = context;
