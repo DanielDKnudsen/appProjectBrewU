@@ -13,6 +13,8 @@ import com.danieldk.brewuappassignment2.R;
 
 import java.util.List;
 
+// Inspiration til brug af recyclerview og Cardview https://www.binpress.com/android-recyclerview-cardview-guide/
+
 public class RecyclerDetailsAdaptor extends RecyclerView.Adapter<RecyclerDetailsAdaptor.MyViewHolder> {
     private List<Step> mDataset;
     private Context context;

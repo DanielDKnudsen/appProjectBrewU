@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.danieldk.brewuappassignment2.Models.Step;
 import com.danieldk.brewuappassignment2.R;
 
+// Inspiration til brug af recyclerview og Cardview https://www.binpress.com/android-recyclerview-cardview-guide/
+
 import java.util.List;
 
 public class RecyclerCreateAdaptor extends RecyclerView.Adapter<RecyclerCreateAdaptor.CreateViewHolder> {

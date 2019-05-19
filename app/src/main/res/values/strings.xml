@@ -13,7 +13,6 @@
     <string name="SearchBrewTypeHint">Search Type or Creator</string>
     <string name="notificationTitle">Someone rated your brew</string>
     <string name="notificationText">has been rated. New average rating is:</string>
-    <string name="placeholder" translatable="false">Placeholder</string>
     <string name="TemperatureHint">Temperature:</string>
     <string name="timeHint">Time:</string>
     <string name="ChooseBeerTitle">Choose beer title</string>
@@ -24,4 +23,5 @@
     <string name="title">Title</string>
     <string name="celsius" translatable="false">℃</string>
     <string name="minutes" translatable="false">min</string>
+    <string name="placeholder" translatable="false">Placeholder</string>
 </resources>

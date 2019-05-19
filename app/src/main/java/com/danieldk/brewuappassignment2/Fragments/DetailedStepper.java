@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Collections;
 import java.util.List;
 
+// Inspiration til brug og implementering af recyclerview https://www.binpress.com/android-recyclerview-cardview-guide/
 
 public class DetailedStepper extends Fragment {
 
@@ -34,9 +35,7 @@ public class DetailedStepper extends Fragment {
     private List<Step> steps;
     private TextView txtBrewTitle;
 
-    public DetailedStepper() {
-        // Required empty public constructor
-    }
+    public DetailedStepper() {    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
